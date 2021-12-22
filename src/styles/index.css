@@ -872,10 +872,6 @@ video {
 		margin-bottom: 2.5rem;
 	}
 
-	.md\:block {
-		display: block;
-	}
-
 	.md\:w-auto {
 		width: auto;
 	}

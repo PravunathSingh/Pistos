@@ -1,3 +1,6 @@
+// TODOS:
+// 1. Add functionality to remove item
+
 import React, { useState } from 'react';
 import pizza from '../../assests/pizza.jpeg';
 

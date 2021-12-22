@@ -1,3 +1,6 @@
+// TODOS:
+// 1. Add functionality to the proceed to checkout and clear cart button.
+
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import CartItem from './CartItem';
@@ -79,9 +82,9 @@ const Cart = () => {
         <img
           src={sandwich}
           alt='sandwich'
-          className='absolute right-0 hidden top-40 md:block'
+          className='absolute right-0 hidden top-40 lg:block'
         />
-        <img src={pie} alt='pie' className='absolute hidden md:block' />
+        <img src={pie} alt='pie' className='absolute hidden lg:block' />
       </div>
     </div>
   );
