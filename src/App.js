@@ -1,10 +1,10 @@
 import React from 'react';
-import CartHeader from './components/mycart/CartHeader';
+import Mycart from './pages/Mycart';
 
 const App = () => {
   return (
     <div>
-      <CartHeader />
+      <Mycart />
     </div>
   );
 };
