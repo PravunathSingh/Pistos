@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import CartItem from './CartItem';
 import sandwich from '../../assests/sandwich.png';
 import pie from '../../assests/pie.png';
+import EmptyCart from './EmptyCart';
 
 const cartData = [
   {
@@ -57,8 +58,17 @@ const Cart = () => {
     return <CartItem key={item.id} item={item} />;
   });
 
+  if (cart.length === 0) {
+    return <EmptyCart />;
+  } else {
+    cart.map((item) => {
+      return <CartItem key={item.id} item={item} />;
+    });
+  }
+
   return (
     <div className='container font-rubik sm:my-16 md:md-24 lg:my-80'>
+      {/* {!cart.length && <EmptyCart />} */}
       <div className='flex items-center justify-between mb-8 md:mb-16 lg:mb-24'>
         <h6 className='text-lg font-medium text-gray-300 md:text-2xl'>
           No of Items: <span className='text-brand-text'>{cart.length}</span>
@@ -73,12 +83,13 @@ const Cart = () => {
 
       {cartItems}
 
+      <div className='max-w-full mx-auto my-8 md:ml-auto md:mt-10 lg:mt-16 md:max-w-max'>
+        <button className='w-full px-8 py-3 text-lg font-medium text-gray-900 transition-all duration-300 rounded-lg hover:text md:w-auto bg-cta md:text-xl hover:bg-cta-dark hover:scale-110 focus:ring-2 ring-offset-2 ring-cta-dark'>
+          Proceed To Checkout
+        </button>
+      </div>
+
       <div className='relative'>
-        <div className='max-w-full mx-auto my-8 md:ml-auto md:mt-10 lg:mt-16 md:max-w-max'>
-          <button className='w-full px-8 py-3 text-lg font-medium text-gray-900 transition-all duration-300 rounded-lg hover:text md:w-auto bg-cta md:text-xl hover:bg-cta-dark hover:scale-110 focus:ring-2 ring-offset-2 ring-cta-dark'>
-            Proceed To Checkout
-          </button>
-        </div>
         <img
           src={sandwich}
           alt='sandwich'
