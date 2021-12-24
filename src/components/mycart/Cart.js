@@ -83,7 +83,7 @@ const Cart = () => {
 
       {cartItems}
 
-      <div className='max-w-full mx-auto my-8 md:ml-auto md:mt-10 lg:mt-16 md:max-w-max'>
+      <div className='max-w-full mx-auto my-12 md:ml-auto md:mt-10 lg:mt-16 md:max-w-max'>
         <button className='w-full px-8 py-3 text-lg font-medium text-gray-900 transition-all duration-300 rounded-lg hover:text md:w-auto bg-cta md:text-xl hover:bg-cta-dark hover:scale-110 focus:ring-2 ring-offset-2 ring-cta-dark'>
           Proceed To Checkout
         </button>
@@ -93,9 +93,9 @@ const Cart = () => {
         <img
           src={sandwich}
           alt='sandwich'
-          className='absolute right-0 hidden top-40 lg:block'
+          className='absolute right-0 z-0 hidden lg:block'
         />
-        <img src={pie} alt='pie' className='absolute hidden lg:block' />
+        <img src={pie} alt='pie' className='absolute hidden -top-32 lg:block' />
       </div>
     </div>
   );

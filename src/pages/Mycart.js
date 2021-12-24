@@ -7,12 +7,14 @@
 import React from 'react';
 import Cart from '../components/mycart/Cart';
 import CartHeader from '../components/mycart/CartHeader';
+import Footer from '../components/ui/Footer';
 
 const Mycart = () => {
   return (
     <div>
       <CartHeader />
       <Cart />
+      <Footer />
     </div>
   );
 };
