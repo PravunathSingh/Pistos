@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 
 const Footer = () => {
   const [userEmail, setUserEmail] = useState('');
-  // const newsFeedChangeHandler = (e) => {
-  //   setUserEmail(e.target.value);
-  // };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setUserEmail('');
+  };
 
   return (
     <div className='z-50 py-16 bg-primary'>
@@ -24,8 +26,8 @@ const Footer = () => {
                 placeholder='Enter Email Address'
               />
               <button
-                type='submit'
                 className='w-full px-8 py-2 text-lg font-medium text-gray-900 transition-all duration-300 rounded-lg hover:text md:w-auto bg-cta md:text-xl hover:bg-cta-dark hover:scale-110 focus:ring-2 ring-offset-2 ring-cta-dark'
+                onSubmit={submitHandler}
               >
                 Submit
               </button>
