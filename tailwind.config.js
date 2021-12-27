@@ -19,6 +19,10 @@ module.exports = {
       fontFamily: {
         rubik: ['Rubik', 'Roboto'],
       },
+      backgroundImage: {
+        signup: "url('/src/assests/signup.jpeg')",
+        login: "url('/src/assests/login.jpeg')",
+      },
       borderWidth: {
         0.2: '.2px',
       },
