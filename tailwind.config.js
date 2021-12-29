@@ -33,6 +33,8 @@ module.exports = {
         'brand-text': '#FC6011',
         rating: '#FFFF00',
         'fb-blue': '#367FC0',
+        'fb-blue-dark': '#135A9A',
+        'google-red-dark': '#A81402',
         'google-red': '#DD4B39',
         border: '#FEBD00',
         'cta-dark': '#8FCE0B',

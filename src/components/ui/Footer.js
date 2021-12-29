@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <div className='z-50 py-16 bg-primary'>
       <div className='container font-rubik'>
-        <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-4 place-content-center'>
+        <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-4 place-content-center'>
           <div className='my-8'>
             <p className='mb-5 text-lg font-medium text-center text-gray-100 lg:text-xl md:text-left md:mb-8'>
               Don't miss to subscribe to our new feeds, kindly fill the form
