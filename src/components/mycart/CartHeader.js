@@ -4,7 +4,7 @@ import legPiece from '../../assests/legPiece.png';
 
 const CartHeader = () => {
   return (
-    <div className='relative my-10 md:my-14 lg:my-24'>
+    <div className='relative my-24 md:my-32 lg:my-40'>
       <img
         src={popcorn}
         alt='popcorn bg-img'

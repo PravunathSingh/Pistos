@@ -6,17 +6,19 @@
 */
 
 import React from 'react';
-import track1 from '../../assests/track1.png';
-import track2 from '../../assests/track2.png';
-import track3 from '../../assests/track3.png';
-import track4 from '../../assests/track4.png';
-import track5 from '../../assests/track5.png';
-import track6 from '../../assests/track6.png';
-import Footer from '../ui/Footer';
+import track1 from '../assests/track1.png';
+import track2 from '../assests/track2.png';
+import track3 from '../assests/track3.png';
+import track4 from '../assests/track4.png';
+import track5 from '../assests/track5.png';
+import track6 from '../assests/track6.png';
+import Footer from '../components/ui/Footer';
+import Navbar from '../components/ui/Navbar';
 
 const TrackOrder = () => {
   return (
     <div className='font-rubik'>
+      <Navbar />
       <div className='container max-w-4xl mx-auto my-16 sm:my-20 md:my-28 lg:my-40'>
         <div className='flex justify-between items-center mb-16 sm:mb-20 md:mb-24 lg:mb-32'>
           <h2 className='text-gray-100 font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl'>

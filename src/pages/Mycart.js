@@ -8,10 +8,12 @@ import React from 'react';
 import Cart from '../components/mycart/Cart';
 import CartHeader from '../components/mycart/CartHeader';
 import Footer from '../components/ui/Footer';
+import Navbar from '../components/ui/Navbar';
 
 const Mycart = () => {
   return (
     <div>
+      <Navbar />
       <CartHeader />
       <Cart />
       <Footer />
