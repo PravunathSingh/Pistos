@@ -25,7 +25,7 @@ const Navbar = () => {
               className='cursor-pointer text-gray-200 md:text-lg py-2'
               onClick={setNewLocation}
             >
-              Lichbagan More, Bandel, 712123{' '}
+              Lichubagan More, Bandel, 712123{' '}
               <span>
                 <i className='fas fa-chevron-down text-brand-text'></i>
               </span>
@@ -59,9 +59,6 @@ const Navbar = () => {
               </li>
               <li className='py-2 ml-6 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
                 <NavLink to='/profile'>My Profile</NavLink>
-              </li>
-              <li className='py-2 ml-6 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
-                <NavLink to='/signin'>Sign In</NavLink>
               </li>
               <li className='py-2 ml-6 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
                 <NavLink to='/signup'>Sign Up</NavLink>
