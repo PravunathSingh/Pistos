@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5a97d07e.chunk.css",
+    "main.js": "/static/js/main.2ce6047e.chunk.js",
+    "main.js.map": "/static/js/main.2ce6047e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e2c6121f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e2c6121f.js.map",
+    "static/js/2.25e06ac3.chunk.js": "/static/js/2.25e06ac3.chunk.js",
+    "static/js/2.25e06ac3.chunk.js.map": "/static/js/2.25e06ac3.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.5a97d07e.chunk.css.map": "/static/css/main.5a97d07e.chunk.css.map",
+    "static/js/2.25e06ac3.chunk.js.LICENSE.txt": "/static/js/2.25e06ac3.chunk.js.LICENSE.txt",
+    "static/media/appStore.c53eb7be.png": "/static/media/appStore.c53eb7be.png",
+    "static/media/applinks.1c888ebf.png": "/static/media/applinks.1c888ebf.png",
+    "static/media/bigLegpiece.488b0e6b.png": "/static/media/bigLegpiece.488b0e6b.png",
+    "static/media/burger.77a93fe1.png": "/static/media/burger.77a93fe1.png",
+    "static/media/cartEmpty.91bbb3f0.png": "/static/media/cartEmpty.91bbb3f0.png",
+    "static/media/googlePlay.1ad83cea.png": "/static/media/googlePlay.1ad83cea.png",
+    "static/media/hero.710549eb.png": "/static/media/hero.710549eb.png",
+    "static/media/index.css": "/static/media/signup.5dde032e.jpeg",
+    "static/media/news1.c60d1188.png": "/static/media/news1.c60d1188.png",
+    "static/media/news2.39c16dce.png": "/static/media/news2.39c16dce.png",
+    "static/media/news3.bb0c50da.png": "/static/media/news3.bb0c50da.png",
+    "static/media/omlet.6c5b1163.png": "/static/media/omlet.6c5b1163.png",
+    "static/media/pie.b1c58233.png": "/static/media/pie.b1c58233.png",
+    "static/media/popcorn.b660b007.png": "/static/media/popcorn.b660b007.png",
+    "static/media/profileLarge.49c83c3c.png": "/static/media/profileLarge.49c83c3c.png",
+    "static/media/profileSmall.5932dc24.png": "/static/media/profileSmall.5932dc24.png",
+    "static/media/sandwich.eca670eb.png": "/static/media/sandwich.eca670eb.png",
+    "static/media/taco.cf1ee89f.png": "/static/media/taco.cf1ee89f.png",
+    "static/media/tradition.0421b01e.png": "/static/media/tradition.0421b01e.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e2c6121f.js",
+    "static/js/2.25e06ac3.chunk.js",
+    "static/css/main.5a97d07e.chunk.css",
+    "static/js/main.2ce6047e.chunk.js"
+  ]
+}
