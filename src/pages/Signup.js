@@ -9,10 +9,12 @@ import taco from '../assests/taco.png';
 import burger from '../assests/burger.png';
 import omlet from '../assests/omlet.png';
 import { NavLink } from 'react-router-dom';
+import AuthNav from '../components/ui/AuthNav';
 
 const Signup = () => {
   return (
     <div className='font-rubik'>
+      <AuthNav className='relative' />
       <div className='py-8 relative lg:bg-no-repeat lg:bg-cover lg:bg-signup md:py-12 lg:py-16'>
         <img src={taco} alt='' className='absolute lg:hidden w-48 max-h-48' />
         <img
