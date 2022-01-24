@@ -15,19 +15,19 @@ const Signup = () => {
   return (
     <div className='font-rubik'>
       <AuthNav className='relative' />
-      <div className='py-8 relative lg:bg-no-repeat lg:bg-cover lg:bg-signup md:py-12 lg:py-16'>
-        <img src={taco} alt='' className='absolute lg:hidden w-48 max-h-48' />
+      <div className='relative py-8 lg:bg-no-repeat lg:bg-center lg:bg-signup md:py-12 lg:py-16'>
+        <img src={taco} alt='' className='absolute w-48 lg:hidden max-h-48' />
         <img
           src={burger}
           alt=''
-          className='absolute top-60 right-10 lg:hidden w-48 max-h-48'
+          className='absolute w-48 top-60 right-10 lg:hidden max-h-48'
         />
         <img
           src={omlet}
           alt=''
-          className='absolute top-1/2 left-20 lg:hidden w-48 max-h-48'
+          className='absolute w-48 top-1/2 left-20 lg:hidden max-h-48'
         />
-        <div className='lg:absolute top-0 left-0 w-full h-full opacity-40 bg-primary'></div>
+        {/* <div className='top-0 left-0 w-full h-full lg:absolute opacity-40 bg-primary'></div> */}
         <div className='container relative flex items-center justify-center lg:justify-end '>
           <form>
             <h4 className='mb-6 text-2xl font-semibold text-center text-gray-100 md:mb-10 lg:mb-14 md:text-4xl'>
@@ -44,7 +44,7 @@ const Signup = () => {
               </div>
               <input
                 type='text'
-                className='w-full py-1 text-lg text-gray-200 bg-transparent border-b-2 border-gray-100 outline-none  md:text-xl focus:bg-transparent'
+                className='w-full py-1 text-lg text-gray-200 bg-transparent border-b-2 border-gray-100 outline-none md:text-xl focus:bg-transparent'
                 required
               />
             </div>

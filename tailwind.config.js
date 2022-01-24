@@ -19,9 +19,17 @@ module.exports = {
       fontFamily: {
         rubik: ['Rubik', 'Roboto'],
       },
+      height: {
+        '85vh': '85vh',
+      },
       backgroundImage: {
-        signup: "url('/src/assests/signup.jpeg')",
-        login: "url('/src/assests/login.jpeg')",
+        signup: "url('/src/assests/signup.png')",
+        login: "url('/src/assests/signin.png')",
+        error: "url('/src/assests/error-bg.png')",
+        privacy: "url('/src/assests/privacy.png')",
+        genieHero: "url('/src/assests/genieHero.png')",
+        genieFromTo: "url('/src/assests/genieFromTo.png')",
+        aboutHero: "url('/src/assests/aboutHero.png')",
       },
       borderWidth: {
         0.2: '.2px',

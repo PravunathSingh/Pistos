@@ -14,20 +14,20 @@ const Navbar = () => {
   };
 
   return (
-    <div className='fixed top-0 left-0 w-full z-50 opacity-100 shadow-lg bg-secondary'>
+    <div className='fixed top-0 left-0 z-50 w-full shadow-lg opacity-100 bg-secondary'>
       <nav className='shadow-lg bg-secondary font-rubik'>
-        <div className='container py-3 md:py-4 flex flex-wrap justify-between items-center'>
+        <div className='container flex flex-wrap items-center justify-between py-3 md:py-4'>
           <NavLink
             to='/'
             exact='true'
-            className='font-semibold text-3xl md:text-4xl text-gray-100'
+            className='text-3xl font-semibold text-gray-100 md:text-4xl'
           >
             Logo
           </NavLink>
 
           <div className='hidden sm:block'>
             <h6
-              className='cursor-pointer text-gray-200 md:text-lg py-2'
+              className='py-2 text-gray-200 cursor-pointer md:text-lg'
               onClick={setNewLocation}
             >
               Lichubagan More, Bandel, 712123{' '}
@@ -37,8 +37,8 @@ const Navbar = () => {
             </h6>
 
             {dropdownToggler ? (
-              <div className='rounded-md px-6 py-3 bg-primary shadow-lg cursor-pointer'>
-                <h6 className='md:text-lg text-gray-200 hover:text-brand-text transition-all duration-200'>
+              <div className='px-6 py-3 rounded-md shadow-lg cursor-pointer bg-primary'>
+                <h6 className='text-gray-200 transition-all duration-200 md:text-lg hover:text-brand-text'>
                   <i className='fa fa-map-marker'></i> Set New Location
                 </h6>
               </div>
@@ -49,30 +49,82 @@ const Navbar = () => {
 
           <div className='lg:hidden'>
             <i
-              className='fa fa-bars fa-2x text-gray-200 hover:text-brand-text transition-all duration-200'
+              className='text-gray-200 transition-all duration-200 fa fa-bars fa-2x hover:text-brand-text'
               onClick={showMobNav}
             ></i>
           </div>
 
           <div className='hidden lg:block'>
-            <ul className='list-none hidden lg:flex'>
-              <li className='py-2 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
-                <NavLink to='/about'>About Us</NavLink>
+            <ul className='hidden list-none lg:flex'>
+              <li className='py-2 font-medium text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
+                <NavLink
+                  to='/about'
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'text-brand-text'
+                      : 'text-gray-300 transition-all duration-200 hover:text-brand-text'
+                  }
+                >
+                  About Us
+                </NavLink>
               </li>
-              <li className='py-2 ml-6 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
-                <NavLink to='/menu'>Menu</NavLink>
+              <li className='py-2 ml-6 font-medium text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
+                <NavLink
+                  to='/menu'
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'text-brand-text'
+                      : 'text-gray-300 transition-all duration-200 hover:text-brand-text'
+                  }
+                >
+                  Menu
+                </NavLink>
               </li>
-              <li className='py-2 ml-6 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
-                <NavLink to='/genie'>Genie</NavLink>
+              <li className='py-2 ml-6 font-medium text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
+                <NavLink
+                  to='/genie'
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'text-brand-text'
+                      : 'text-gray-300 transition-all duration-200 hover:text-brand-text'
+                  }
+                >
+                  Genie
+                </NavLink>
               </li>
-              <li className='py-2 ml-6 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
-                <NavLink to='/profile'>My Profile</NavLink>
+              <li className='py-2 ml-6 font-medium text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
+                <NavLink
+                  to='/profile'
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'text-brand-text'
+                      : 'text-gray-300 transition-all duration-200 hover:text-brand-text'
+                  }
+                >
+                  My Profile
+                </NavLink>
               </li>
-              <li className='py-2 ml-6 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
-                <NavLink to='/signup'>Sign Up</NavLink>
+              <li className='py-2 ml-6 font-medium text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
+                <NavLink
+                  to='/signup'
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'text-brand-text'
+                      : 'text-gray-300 transition-all duration-200 hover:text-brand-text'
+                  }
+                >
+                  Sign Up
+                </NavLink>
               </li>
-              <li className='py-2 ml-6 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
-                <NavLink to='/cart'>
+              <li className='py-2 ml-6 font-medium text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
+                <NavLink
+                  to='/cart'
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'text-brand-text'
+                      : 'text-gray-300 transition-all duration-200 hover:text-brand-text'
+                  }
+                >
                   <button>
                     <i className='fa fa-shopping-cart'></i>
                   </button>
@@ -90,11 +142,11 @@ const Navbar = () => {
               : ' -translate-y-96 opacity-0 h-0')
           }
         >
-          <ul className='list-none grid grid-cols-3 place-items-center gap-6'>
+          <ul className='grid grid-cols-3 gap-6 list-none place-items-center'>
             <li className='col-span-3 sm:hidden'>
               <div>
                 <h6
-                  className='cursor-pointer text-gray-200 md:text-lg py-2'
+                  className='py-2 text-gray-200 cursor-pointer md:text-lg'
                   onClick={setNewLocation}
                 >
                   Lichubagan More, Bandel, 712123{' '}
@@ -104,8 +156,8 @@ const Navbar = () => {
                 </h6>
 
                 {dropdownToggler ? (
-                  <div className='rounded-md px-6 py-3 bg-primary shadow-lg cursor-pointer'>
-                    <h6 className='md:text-lg text-gray-200 hover:text-brand-text transition-all duration-200'>
+                  <div className='px-6 py-3 rounded-md shadow-lg cursor-pointer bg-primary'>
+                    <h6 className='text-gray-200 transition-all duration-200 md:text-lg hover:text-brand-text'>
                       <i className='fa fa-map-marker'></i> Set New Location
                     </h6>
                   </div>
@@ -114,22 +166,22 @@ const Navbar = () => {
                 )}
               </div>
             </li>
-            <li className='py-2 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
+            <li className='py-2 text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
               <NavLink to='/about'>About Us</NavLink>
             </li>
-            <li className='py-2 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
+            <li className='py-2 text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
               <NavLink to='/menu'>Menu</NavLink>
             </li>
-            <li className='py-2 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
+            <li className='py-2 text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
               <NavLink to='/genie'>Genie</NavLink>
             </li>
-            <li className='py-2 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
+            <li className='py-2 text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
               <NavLink to='/profile'>My Profile</NavLink>
             </li>
-            <li className='py-2 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
+            <li className='py-2 text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
               <NavLink to='/signup'>Sign Up</NavLink>
             </li>
-            <li className='py-2 md:text-lg text-gray-300 hover:text-brand-text transition-all duration-200'>
+            <li className='py-2 text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
               <NavLink to='/cart'>
                 <button>
                   <i className='fa fa-shopping-cart'></i>

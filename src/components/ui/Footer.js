@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -39,6 +40,11 @@ const Footer = () => {
               Our Menus
             </h6>
             <ul>
+              <Link to='/genie'>
+                <li className='mb-3 text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text md:mb-5'>
+                  Genie
+                </li>
+              </Link>
               <li className='mb-3 text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text md:mb-5'>
                 Lunch
               </li>
@@ -56,15 +62,22 @@ const Footer = () => {
               Links
             </h6>
             <ul>
+              <Link to='/about'>
+                <li className='mb-3 text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text md:mb-5'>
+                  About Us
+                </li>
+              </Link>
               <li className='mb-3 text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text md:mb-5'>
-                About Us
+                News
               </li>
               <li className='mb-3 text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text md:mb-5'>
                 Terms of Use
               </li>
-              <li className='text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text'>
-                Privacy Policy
-              </li>
+              <Link to='/privacyPolicy'>
+                <li className='text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text'>
+                  Privacy Policy
+                </li>
+              </Link>
             </ul>
           </div>
 

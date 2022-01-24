@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import tradition from '../../assests/tradition.png';
 
 const Tradition = () => {
@@ -16,9 +17,11 @@ const Tradition = () => {
           Lorem ipsum dolor sit, amet consectetur adipisicing elit.
         </p>
 
-        <button className='w-full px-6 py-2 mb-4 font-medium text-gray-900 transition-all duration-200 rounded-md lg:w-auto md:mb-0 md:mr-8 md:text-lg bg-cta-dark hover:bg-cta hover:shadow-md hover:-translate-y-2'>
-          Explore Our Story
-        </button>
+        <Link to='/about'>
+          <button className='w-full px-6 py-2 mb-4 font-medium text-gray-900 transition-all duration-200 rounded-md lg:w-auto md:mb-0 md:mr-8 md:text-lg bg-cta-dark hover:bg-cta hover:shadow-md hover:-translate-y-2'>
+            Explore Our Story
+          </button>
+        </Link>
       </div>
 
       <div className='order-1 md:order-2'>
