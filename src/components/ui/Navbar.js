@@ -184,12 +184,16 @@ const Navbar = () => {
             <li className='py-2 text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
               <NavLink to='/genie'>Genie</NavLink>
             </li>
-            <li className='py-2 text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
-              <NavLink to='/profile'>My Profile</NavLink>
-            </li>
-            <li className='py-2 text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
-              <NavLink to='/signup'>Sign Up</NavLink>
-            </li>
+            {isLoggedIn && (
+              <li className='py-2 text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
+                <NavLink to='/profile'>My Profile</NavLink>
+              </li>
+            )}
+            {!isLoggedIn && (
+              <li className='py-2 text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
+                <NavLink to='/signup'>Sign Up</NavLink>
+              </li>
+            )}
             <li className='py-2 text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
               <NavLink to='/cart'>
                 <button>
