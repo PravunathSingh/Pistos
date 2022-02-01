@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Auth } from '../../context/authContext';
 
 const Navbar = () => {
   const [dropdownToggler, setDropdownToggler] = useState(false);
   const [navToggle, setNavToggle] = useState(false);
+
+  const authCtx = useContext(Auth);
+  const isLoggedIn = authCtx.isLoggedIn;
 
   const showMobNav = () => {
     setNavToggle((value) => !value);
@@ -92,30 +96,35 @@ const Navbar = () => {
                   Genie
                 </NavLink>
               </li>
-              <li className='py-2 ml-6 font-medium text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
-                <NavLink
-                  to='/profile'
-                  className={({ isActive }) =>
-                    isActive
-                      ? 'text-brand-text'
-                      : 'text-gray-300 transition-all duration-200 hover:text-brand-text'
-                  }
-                >
-                  My Profile
-                </NavLink>
-              </li>
-              <li className='py-2 ml-6 font-medium text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
-                <NavLink
-                  to='/signup'
-                  className={({ isActive }) =>
-                    isActive
-                      ? 'text-brand-text'
-                      : 'text-gray-300 transition-all duration-200 hover:text-brand-text'
-                  }
-                >
-                  Sign Up
-                </NavLink>
-              </li>
+              {isLoggedIn && (
+                <li className='py-2 ml-6 font-medium text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
+                  <NavLink
+                    to='/profile'
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'text-brand-text'
+                        : 'text-gray-300 transition-all duration-200 hover:text-brand-text'
+                    }
+                  >
+                    My Profile
+                  </NavLink>
+                </li>
+              )}
+
+              {!isLoggedIn && (
+                <li className='py-2 ml-6 font-medium text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
+                  <NavLink
+                    to='/signup'
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'text-brand-text'
+                        : 'text-gray-300 transition-all duration-200 hover:text-brand-text'
+                    }
+                  >
+                    Sign Up
+                  </NavLink>
+                </li>
+              )}
               <li className='py-2 ml-6 font-medium text-gray-300 transition-all duration-200 md:text-lg hover:text-brand-text'>
                 <NavLink
                   to='/cart'
