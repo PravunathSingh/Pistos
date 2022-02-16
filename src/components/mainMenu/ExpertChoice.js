@@ -9,7 +9,7 @@ const ExpertChoice = () => {
   return (
     <div className='mt-24 md:mt-32 lg:mt-48 font-rubik'>
       <div className='container'>
-        <h4 className='mb-8 text-center text-gray-100 text- lg:text-left md:text-2xl lg:text-3xl md:mb-10'>
+        <h4 className='mb-8 text-center text-gray-100 lg:text-left md:text-2xl lg:text-3xl md:mb-10'>
           Expert Choice
         </h4>
       </div>
