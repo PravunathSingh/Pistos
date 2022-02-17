@@ -13,9 +13,7 @@ const RestaurantList = ({ allRestaurants }) => {
 
   return (
     <div className='grid grid-cols-2 gap-12 md:grid-cols-3 place-content-center place-items-center'>
-      {allRestaurants.length !== 0
-        ? restaurantsList
-        : 'No Restaurants Available...'}
+      {restaurantsList}
     </div>
   );
 };

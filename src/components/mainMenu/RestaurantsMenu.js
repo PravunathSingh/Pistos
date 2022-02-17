@@ -6,6 +6,7 @@ import RestaurantList from './allRestaurants.js/RestaurantList';
 const RestaurantsMenu = () => {
   const [isSorted, setIsSorted] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const restaurants = useContext(Restaurants);
   const allRestaurants = restaurants.allRestaurants;
 
@@ -27,21 +28,24 @@ const RestaurantsMenu = () => {
     }
   });
 
-  const search = () => {
-    console.log(searchRef.current.value);
-
-    if (searchRef.current.value !== '') {
+  const searchHandler = (e) => {
+    setSearchTerm(e.target.value);
+    if (searchTerm !== '') {
       const filteredRestaurants = sortedRestaurants.filter((restaurant) => {
         return Object.values(restaurant)
           .join(' ')
           .toLowerCase()
-          .includes(searchRef.current.value.toLowerCase());
+          .includes(searchTerm.toLowerCase());
       });
       setSearchResults(filteredRestaurants);
     } else {
       setSearchResults(sortedRestaurants);
     }
   };
+
+  // const search = () => {
+  //
+  // };
 
   return (
     <div className='container mt-24 md:mt-32 lg:mt-48 font-rubik'>
@@ -57,7 +61,8 @@ const RestaurantsMenu = () => {
               placeholder='Search Restaurants...'
               className='px-4 py-2 text-gray-200 border-2 rounded-md border-secondary lg:text-lg bg-primary focus:ring-2 ring-offset-2 ring-offset-secondary'
               ref={searchRef}
-              onChange={search}
+              onChange={searchHandler}
+              value={searchTerm}
             />
           </form>
 
@@ -72,7 +77,7 @@ const RestaurantsMenu = () => {
 
       <RestaurantList
         allRestaurants={
-          searchRef.current.value.length < 1 ? sortedRestaurants : searchResults
+          searchTerm.length < 1 ? sortedRestaurants : searchResults
         }
       />
     </div>
