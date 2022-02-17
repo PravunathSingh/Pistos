@@ -1,21 +1,47 @@
 import axios from 'axios';
-import React, { useContext } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { Restaurants } from '../../context/restaurantsContext';
-import RestaurantItem from './allRestaurants.js/RestaurantItem';
+import RestaurantList from './allRestaurants.js/RestaurantList';
 
 const RestaurantsMenu = () => {
-  const allRestaurants = useContext(Restaurants);
+  const [isSorted, setIsSorted] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const restaurants = useContext(Restaurants);
+  const allRestaurants = restaurants.allRestaurants;
 
-  console.log(allRestaurants.allRestaurants);
+  const searchRef = useRef();
 
-  const restaurants = allRestaurants.allRestaurants.map((restaurant) => {
-    return (
-      <RestaurantItem
-        key={restaurant.restaurant_id}
-        restaurantData={restaurant}
-      />
-    );
+  console.log(allRestaurants);
+
+  allRestaurants.map((restaurant) => console.log(restaurant.restaurant_rating));
+
+  const sortRestaurants = () => {
+    setIsSorted(true);
+  };
+
+  const sortedRestaurants = allRestaurants.sort((a, b) => {
+    if (isSorted) {
+      return b.restaurant_rating - a.restaurant_rating;
+    } else {
+      return allRestaurants;
+    }
   });
+
+  const search = () => {
+    console.log(searchRef.current.value);
+
+    if (searchRef.current.value !== '') {
+      const filteredRestaurants = sortedRestaurants.filter((restaurant) => {
+        return Object.values(restaurant)
+          .join(' ')
+          .toLowerCase()
+          .includes(searchRef.current.value.toLowerCase());
+      });
+      setSearchResults(filteredRestaurants);
+    } else {
+      setSearchResults(sortedRestaurants);
+    }
+  };
 
   return (
     <div className='container mt-24 md:mt-32 lg:mt-48 font-rubik'>
@@ -30,18 +56,25 @@ const RestaurantsMenu = () => {
               type='text'
               placeholder='Search Restaurants...'
               className='px-4 py-2 text-gray-200 border-2 rounded-md border-secondary lg:text-lg bg-primary focus:ring-2 ring-offset-2 ring-offset-secondary'
+              ref={searchRef}
+              onChange={search}
             />
           </form>
 
-          <button className='px-4 py-2 text-gray-200 transition-all duration-200 border-2 rounded-md cursor-pointer bg-primary lg:text-lg border-secondary'>
+          <button
+            className='px-4 py-2 text-gray-200 transition-all duration-200 border-2 rounded-md cursor-pointer bg-primary lg:text-lg border-secondary'
+            onClick={sortRestaurants}
+          >
             Sort: Highest To Lowest (Rating)
           </button>
         </div>
       </div>
 
-      <div className='grid grid-cols-2 gap-12 md:grid-cols-3 place-content-center place-items-center'>
-        {restaurants}
-      </div>
+      <RestaurantList
+        allRestaurants={
+          searchRef.current.value.length < 1 ? sortedRestaurants : searchResults
+        }
+      />
     </div>
   );
 };
