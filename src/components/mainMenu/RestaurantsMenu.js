@@ -43,9 +43,10 @@ const RestaurantsMenu = () => {
     }
   };
 
-  // const search = () => {
-  //
-  // };
+  const searchFormHandler = (e) => {
+    e.preventDefault();
+    setSearchTerm('');
+  };
 
   return (
     <div className='container mt-24 md:mt-32 lg:mt-48 font-rubik'>
@@ -55,7 +56,7 @@ const RestaurantsMenu = () => {
         </h2>
 
         <div className='flex flex-wrap justify-center gap-4 lg:justify-between'>
-          <form>
+          <form onSubmit={searchFormHandler}>
             <input
               type='text'
               placeholder='Search Restaurants...'
@@ -70,7 +71,8 @@ const RestaurantsMenu = () => {
             className='px-4 py-2 text-gray-200 transition-all duration-200 border-2 rounded-md cursor-pointer bg-primary lg:text-lg border-secondary'
             onClick={sortRestaurants}
           >
-            Sort: Highest To Lowest (Rating)
+            <span className='text-xl text-brand-text'>Sort </span>: Highest To
+            Lowest (Rating)
           </button>
         </div>
       </div>

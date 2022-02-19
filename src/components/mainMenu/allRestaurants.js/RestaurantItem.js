@@ -23,7 +23,10 @@ const RestaurantItem = ({ restaurantData }) => {
         <p className='text-gray-300'>
           <i className='fa fa-star text-brand-text'> </i> {restaurantRating}
         </p>
-        <Link to='/menu' className='text-brand-text hover:text-border'>
+        <Link
+          to={`/menu/restaurant/${restaurantData.restaurant_id}`}
+          className='text-brand-text hover:text-border'
+        >
           View All Items
         </Link>
       </div>

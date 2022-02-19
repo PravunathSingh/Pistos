@@ -3398,6 +3398,9 @@ textarea.form-control.is-invalid {
 .-mt-20 {
 	margin-top: -5rem;
 }
+.mt-8 {
+	margin-top: 2rem;
+}
 .block {
 	display: block;
 }
@@ -3763,6 +3766,10 @@ textarea.form-control.is-invalid {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 }
+.px-2 {
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
 .text-center {
 	text-align: center;
 }
@@ -3796,6 +3803,14 @@ textarea.form-control.is-invalid {
 .text-4xl {
 	font-size: 2.25rem;
 	line-height: 2.5rem;
+}
+.text-xs {
+	font-size: 0.75rem;
+	line-height: 1rem;
+}
+.text-base {
+	font-size: 1rem;
+	line-height: 1.5rem;
 }
 .font-semibold {
 	font-weight: 600;
@@ -3855,6 +3870,14 @@ textarea.form-control.is-invalid {
 	--tw-text-opacity: 1;
 	color: rgba(75, 85, 99, var(--tw-text-opacity));
 }
+.text-border {
+	--tw-text-opacity: 1;
+	color: rgba(254, 189, 0, var(--tw-text-opacity));
+}
+.text-primary {
+	--tw-text-opacity: 1;
+	color: rgba(25, 29, 33, var(--tw-text-opacity));
+}
 .opacity-40 {
 	opacity: 0.4;
 }
@@ -3866,6 +3889,9 @@ textarea.form-control.is-invalid {
 }
 .opacity-0 {
 	opacity: 0;
+}
+.opacity-80 {
+	opacity: 0.8;
 }
 .shadow-lg {
 	--tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -4218,6 +4244,10 @@ textarea.form-control.is-invalid {
 		margin-left: auto;
 	}
 
+	.md\:mb-4 {
+		margin-bottom: 1rem;
+	}
+
 	.md\:w-auto {
 		width: auto;
 	}
@@ -4362,6 +4392,10 @@ textarea.form-control.is-invalid {
 
 	.lg\:col-span-5 {
 		grid-column: span 5 / span 5;
+	}
+
+	.lg\:col-span-3 {
+		grid-column: span 3 / span 3;
 	}
 
 	.lg\:my-40 {
@@ -4509,6 +4543,10 @@ textarea.form-control.is-invalid {
 		gap: 3rem;
 	}
 
+	.lg\:gap-8 {
+		gap: 2rem;
+	}
+
 	.lg\:bg-login {
 		background-image: url('/src/assests/signin.png');
 	}
@@ -4527,6 +4565,10 @@ textarea.form-control.is-invalid {
 
 	.lg\:bg-no-repeat {
 		background-repeat: no-repeat;
+	}
+
+	.lg\:p-8 {
+		padding: 2rem;
 	}
 
 	.lg\:py-40 {
