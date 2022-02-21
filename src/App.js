@@ -20,6 +20,8 @@ import Menu from './pages/Menu';
 import Error404 from './pages/Error404';
 import { Auth } from './context/authContext';
 import RestaurantProductsPage from './pages/RestaurantProductsPage';
+import AllBlogs from './pages/AllBlogs';
+import BlogDetailsPage from './pages/BlogDetailsPage';
 
 const App = () => {
   const authCtx = useContext(Auth);
@@ -48,6 +50,8 @@ const App = () => {
           )}
 
           <Route path='/privacyPolicy' element={<Privacy />} />
+          <Route path='/news' element={<AllBlogs />} />
+          <Route path='/news/newsDetails/:id' element={<BlogDetailsPage />} />
           <Route path='/profile/orders' element={<TrackOrder />} />
 
           {/* <Route path='/imgUpload' element={<ImgUpload />} /> */}

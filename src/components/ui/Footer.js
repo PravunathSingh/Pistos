@@ -67,9 +67,11 @@ const Footer = () => {
                   About Us
                 </li>
               </Link>
-              <li className='mb-3 text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text md:mb-5'>
-                News
-              </li>
+              <Link to='/news'>
+                <li className='mb-3 text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text md:mb-5'>
+                  News
+                </li>
+              </Link>
               <li className='mb-3 text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text md:mb-5'>
                 Terms of Use
               </li>
