@@ -7,7 +7,7 @@ const ProductList = ({ products }) => {
   });
 
   return (
-    <div className='grid grid-cols-2 gap-4 lg:gap-8 md:grid-cols-3 lg:grid-cols-4 place-content-center place-items-center'>
+    <div className='grid gap-4 lg:gap-8 md:grid-cols-3 lg:grid-cols-4 place-content-center place-items-center'>
       {allProducts}
     </div>
   );

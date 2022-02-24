@@ -5,20 +5,20 @@
 // 3. Add increment / decrement item buttons
 
 import React from 'react';
-import Cart from '../components/mycart/Cart';
 import CartHeader from '../components/mycart/CartHeader';
 import Footer from '../components/ui/Footer';
 import Navbar from '../components/ui/Navbar';
+import MyCart from '../components/mycart/MyCart';
 
-const Mycart = () => {
+const MycartPage = () => {
   return (
     <div>
       <Navbar />
       <CartHeader />
-      <Cart />
+      <MyCart />
       <Footer />
     </div>
   );
 };
 
-export default Mycart;
+export default MycartPage;

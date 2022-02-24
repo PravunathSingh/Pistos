@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Mycart from './pages/Mycart';
+import Mycart from './pages/MycartPage';
 import {
   BrowserRouter as Router,
   Routes,
@@ -22,6 +22,8 @@ import { Auth } from './context/authContext';
 import RestaurantProductsPage from './pages/RestaurantProductsPage';
 import AllBlogs from './pages/AllBlogs';
 import BlogDetailsPage from './pages/BlogDetailsPage';
+import MycartPage from './pages/MycartPage';
+import Wishlist from './pages/Wishlist';
 
 const App = () => {
   const authCtx = useContext(Auth);
@@ -38,7 +40,8 @@ const App = () => {
             element={<RestaurantProductsPage />}
           />
           <Route path='/genie' element={<Genie />} />
-          <Route path='/cart' element={<Mycart />} />
+          <Route path='/cart' element={<MycartPage />} />
+          <Route path='/wishlist' element={<Wishlist />} />
           {!isLoggedIn && <Route path='/signup' element={<Signup />} />}
           {!isLoggedIn && <Route path='/signin' element={<SignIn />} />}
           {isLoggedIn && <Route path='/profile' element={<MyProfile />} />}
