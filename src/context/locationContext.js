@@ -45,7 +45,7 @@ const LocationProvider = ({ children }) => {
 
   const locationValue = {
     lat: localStorage.getItem('lat'),
-    long: localStorage.getItem('lat'),
+    long: localStorage.getItem('long'),
   };
 
   return (
