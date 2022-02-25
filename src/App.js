@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from 'react';
-import Mycart from './pages/MycartPage';
+import React, { useContext } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -28,39 +27,6 @@ import Wishlist from './pages/Wishlist';
 const App = () => {
   const authCtx = useContext(Auth);
   const isLoggedIn = authCtx.isLoggedIn;
-
-  useEffect(() => {
-    // if ('geolocation' in navigator) {
-    //   alert('Geolocation is available');
-    // } else {
-    //   alert('Geolocation is not available');
-    // }
-
-    // var geoSettings = {
-    //   enableHighAccuracy: false,
-    //   maximumAge: 30000,
-    //   timeout: 20000,
-    // };
-
-    if (navigator.geolocation) {
-      navigator.permissions
-        .query({ name: 'geolocation' })
-        .then(function (result) {
-          if (result.state === 'granted') {
-            console.log(result.state);
-          } else if (result.state === 'prompt') {
-            console.log('prompt');
-          } else if (result.state === 'denied') {
-            alert('please enable location permission');
-          }
-          result.onchange = function () {
-            console.log(result.state);
-          };
-        });
-    } else {
-      alert('Sorry Not available!');
-    }
-  });
 
   return (
     <Router>

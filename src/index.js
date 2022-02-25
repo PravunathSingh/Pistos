@@ -6,18 +6,21 @@ import AuthProvider from './context/authContext';
 import RestaurantsProvider from './context/restaurantsContext';
 import CartProvider from './context/cartContext';
 import WishlistProvider from './context/wishlistContext';
+import LocationProvider from './context/locationContext';
 
 ReactDOM.render(
   <AuthProvider>
-    <RestaurantsProvider>
-      <CartProvider>
-        <WishlistProvider>
-          <React.StrictMode>
-            <App />
-          </React.StrictMode>
-        </WishlistProvider>
-      </CartProvider>
-    </RestaurantsProvider>
+    <LocationProvider>
+      <RestaurantsProvider>
+        <CartProvider>
+          <WishlistProvider>
+            <React.StrictMode>
+              <App />
+            </React.StrictMode>
+          </WishlistProvider>
+        </CartProvider>
+      </RestaurantsProvider>
+    </LocationProvider>
   </AuthProvider>,
   document.getElementById('root')
 );

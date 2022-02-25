@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Auth } from '../../context/authContext';
+import { Location } from '../../context/locationContext';
 
 const Navbar = () => {
   const [dropdownToggler, setDropdownToggler] = useState(false);
@@ -8,6 +9,7 @@ const Navbar = () => {
 
   const authCtx = useContext(Auth);
   const isLoggedIn = authCtx.isLoggedIn;
+  const locationCtx = useContext(Location);
 
   const showMobNav = () => {
     setNavToggle((value) => !value);
@@ -34,7 +36,9 @@ const Navbar = () => {
               className='py-2 text-gray-200 cursor-pointer md:text-lg'
               onClick={setNewLocation}
             >
-              Lichubagan More, Bandel, 712123{' '}
+              {locationCtx.lat !== 0 && locationCtx.long !== 0
+                ? `${locationCtx.lat}, ${locationCtx.long}`
+                : 'Set Location...'}
               <span>
                 <i className='fas fa-chevron-down text-brand-text'></i>
               </span>
@@ -158,7 +162,9 @@ const Navbar = () => {
                   className='py-2 text-gray-200 cursor-pointer md:text-lg'
                   onClick={setNewLocation}
                 >
-                  Lichubagan More, Bandel, 712123{' '}
+                  {locationCtx.lat !== 0 && locationCtx.long !== 0
+                    ? `${locationCtx.lat}, ${locationCtx.long}`
+                    : 'Set Location...'}
                   <span>
                     <i className='fas fa-chevron-down text-brand-text'></i>
                   </span>
