@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Auth } from '../../context/authContext';
 import { Location } from '../../context/locationContext';
@@ -10,14 +10,6 @@ const Navbar = () => {
   const authCtx = useContext(Auth);
   const isLoggedIn = authCtx.isLoggedIn;
   const locationCtx = useContext(Location);
-
-  // useEffect(() => {
-  //   localStorage.setItem('lat', locationCtx.lat);
-  //   localStorage.setItem('long', locationCtx.long);
-  // });
-
-  // const lat = localStorage.getItem('lat');
-  // const long = localStorage.getItem('long');
 
   const showMobNav = () => {
     setNavToggle((value) => !value);
@@ -170,7 +162,7 @@ const Navbar = () => {
                   className='py-2 text-gray-200 cursor-pointer md:text-lg'
                   onClick={setNewLocation}
                 >
-                  {locationCtx.lat !== 0 && locationCtx.long !== 0
+                  {locationCtx.lat !== null && locationCtx.long !== null
                     ? `${locationCtx.lat}, ${locationCtx.long}`
                     : 'Set Location...'}
                   <span>
