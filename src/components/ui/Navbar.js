@@ -162,7 +162,7 @@ const Navbar = () => {
                   className='py-2 text-gray-200 cursor-pointer md:text-lg'
                   onClick={setNewLocation}
                 >
-                  {locationCtx.lat !== null && locationCtx.long !== null
+                  {locationCtx.lat !== 0 && locationCtx.long !== 0
                     ? `${locationCtx.lat}, ${locationCtx.long}`
                     : 'Set Location...'}
                   <span>
