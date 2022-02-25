@@ -6,8 +6,10 @@ export const Location = createContext({
 });
 
 const LocationProvider = ({ children }) => {
-  const [lat, setLat] = useState(0);
-  const [long, setLong] = useState(0);
+  const localLat = localStorage.getItem('lat');
+  const localLong = localStorage.getItem('long');
+  const [lat, setLat] = useState(localLat);
+  const [long, setLong] = useState(localLong);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -37,11 +39,13 @@ const LocationProvider = ({ children }) => {
         longitude: position.coords.longitude,
       });
     }
-  });
+    localStorage.setItem('lat', lat);
+    localStorage.setItem('long', long);
+  }, [lat, long]);
 
   const locationValue = {
-    lat: lat,
-    long: long,
+    lat: localStorage.getItem('lat'),
+    long: localStorage.getItem('lat'),
   };
 
   return (

@@ -11,6 +11,14 @@ const Navbar = () => {
   const isLoggedIn = authCtx.isLoggedIn;
   const locationCtx = useContext(Location);
 
+  // useEffect(() => {
+  //   localStorage.setItem('lat', locationCtx.lat);
+  //   localStorage.setItem('long', locationCtx.long);
+  // });
+
+  // const lat = localStorage.getItem('lat');
+  // const long = localStorage.getItem('long');
+
   const showMobNav = () => {
     setNavToggle((value) => !value);
   };
