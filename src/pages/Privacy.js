@@ -2,12 +2,12 @@ import React from 'react';
 import PrivacyBody from '../components/privacy/PrivacyBody';
 import PrivacyHeader from '../components/privacy/PrivacyHeader';
 import Footer from '../components/ui/Footer';
-import Navbar from '../components/ui/Navbar';
+// import Navbar from '../components/ui/Navbar';
 
 const Privacy = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <PrivacyHeader />
       <PrivacyBody />
       <Footer />

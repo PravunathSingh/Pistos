@@ -8,12 +8,12 @@ import Reason from '../components/home/Reason';
 import Subscription from '../components/home/Subscription';
 import Tradition from '../components/home/Tradition';
 import Footer from '../components/ui/Footer';
-import Navbar from '../components/ui/Navbar';
+// import Navbar from '../components/ui/Navbar';
 
 const Home = () => {
   return (
     <div className='font-rubik'>
-      <Navbar />
+      {/* <Navbar /> */}
       <Hero />
       <AboutUs />
       <Reason />

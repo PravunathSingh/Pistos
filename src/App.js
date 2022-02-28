@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -23,13 +23,21 @@ import AllBlogs from './pages/AllBlogs';
 import BlogDetailsPage from './pages/BlogDetailsPage';
 import MycartPage from './pages/MycartPage';
 import Wishlist from './pages/Wishlist';
+import Modal from './components/ui/Modal';
+import Navbar from './components/ui/Navbar';
 
 const App = () => {
   const authCtx = useContext(Auth);
   const isLoggedIn = authCtx.isLoggedIn;
+  // const [showModal, setShowModal] = useState(false);
+
+  // const modal = (modalState) => {
+  //   setShowModal(modalState);
+  // };
 
   return (
     <Router>
+      <Navbar />
       <ScrollToTop>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -56,6 +64,7 @@ const App = () => {
           <Route path='/news' element={<AllBlogs />} />
           <Route path='/news/newsDetails/:id' element={<BlogDetailsPage />} />
           <Route path='/profile/orders' element={<TrackOrder />} />
+          <Route path='/modal' element={<Modal />} />
 
           {/* <Route path='/imgUpload' element={<ImgUpload />} /> */}
           <Route path='*' element={<Error404 />} />
