@@ -3,9 +3,8 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import { Auth } from '../../context/authContext';
 import { Location } from '../../context/locationContext';
-import Modal from './Modal';
 
-const Navbar = ({ modal }) => {
+const Navbar = () => {
   const [dropdownToggler, setDropdownToggler] = useState(false);
   const [navToggle, setNavToggle] = useState(false);
   const [address, setAddress] = useState([]);
