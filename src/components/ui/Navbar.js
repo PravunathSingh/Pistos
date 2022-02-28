@@ -11,6 +11,9 @@ const Navbar = () => {
   const isLoggedIn = authCtx.isLoggedIn;
   const locationCtx = useContext(Location);
 
+  // const lat = localStorage.getItem('lat');
+  // const long = localStorage.getItem('long');
+
   const showMobNav = () => {
     setNavToggle((value) => !value);
   };
@@ -36,7 +39,7 @@ const Navbar = () => {
               className='py-2 text-gray-200 cursor-pointer md:text-lg'
               onClick={setNewLocation}
             >
-              {locationCtx.lat !== 0 && locationCtx.long !== 0
+              {locationCtx.lat !== null && locationCtx.long !== null
                 ? `${locationCtx.lat}, ${locationCtx.long}`
                 : 'Set Location...'}
               <span>
@@ -162,7 +165,7 @@ const Navbar = () => {
                   className='py-2 text-gray-200 cursor-pointer md:text-lg'
                   onClick={setNewLocation}
                 >
-                  {locationCtx.lat !== 0 && locationCtx.long !== 0
+                  {locationCtx.lat !== null && locationCtx.long !== null
                     ? `${locationCtx.lat}, ${locationCtx.long}`
                     : 'Set Location...'}
                   <span>

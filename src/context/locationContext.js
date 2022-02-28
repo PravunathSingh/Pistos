@@ -34,18 +34,14 @@ const LocationProvider = ({ children }) => {
     function showPosition(position) {
       setLat(position.coords.latitude);
       setLong(position.coords.longitude);
-      // console.log({
-      //   latitude: position.coords.latitude,
-      //   longitude: position.coords.longitude,
-      // });
     }
     localStorage.setItem('lat', lat);
     localStorage.setItem('long', long);
   }, [lat, long]);
 
   const locationValue = {
-    lat: localStorage.getItem('lat'),
-    long: localStorage.getItem('long'),
+    lat: lat,
+    long: long,
   };
 
   return (
