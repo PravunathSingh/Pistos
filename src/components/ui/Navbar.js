@@ -3,12 +3,17 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import { Auth } from '../../context/authContext';
 import { Location } from '../../context/locationContext';
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 
 const Navbar = () => {
   const [dropdownToggler, setDropdownToggler] = useState(false);
   const [navToggle, setNavToggle] = useState(false);
   const [address, setAddress] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [places, setPlaces] = useState('');
 
   const authCtx = useContext(Auth);
   const isLoggedIn = authCtx.isLoggedIn;
@@ -34,6 +39,16 @@ const Navbar = () => {
 
   const setNewLocation = () => {
     setDropdownToggler((value) => !value);
+  };
+
+  const handleSelect = async (value) => {
+    const results = await geocodeByAddress(value);
+    const latLng = await getLatLng(results[0]);
+    setPlaces('');
+    localStorage.setItem('lat', latLng.lat);
+    localStorage.setItem('long', latLng.lng);
+    setShowModal(false);
+    window.location.reload(false);
   };
 
   console.log(showModal);
@@ -240,42 +255,62 @@ const Navbar = () => {
 
       {showModal ? (
         <>
-          <div className='container fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none'>
-            <div className='relative w-auto max-w-3xl mx-auto my-40'>
-              {/*content*/}
-              <div className='relative flex flex-col w-full bg-gray-100 border-0 rounded-lg shadow-lg outline-none focus:outline-none'>
-                {/*header*/}
-                {/*body*/}
-                <div className='relative flex-auto p-9'>
-                  <p className='my-4 text-lg leading-relaxed text-blueGray-500'>
-                    I always felt like I could do anything. That’s the main
-                    thing people are controlled by! Thoughts- their perception
-                    of themselves! They're slowed down by their perception of
-                    themselves. If you're taught you can’t do anything, you
-                    won’t do anything. I was taught I could do everything.
-                  </p>
+          <PlacesAutocomplete
+            value={places}
+            onChange={setPlaces}
+            onSelect={handleSelect}
+          >
+            {({
+              getInputProps,
+              suggestions,
+              getSuggestionItemProps,
+              loading,
+            }) => (
+              <>
+                <div className='container fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none'>
+                  <div className='relative w-auto max-w-3xl mx-auto my-40'>
+                    <div className='relative flex flex-col w-full bg-gray-100 border-0 rounded-lg shadow-lg outline-none focus:outline-none'>
+                      <div className='relative flex-auto p-9'>
+                        <input
+                          type='text'
+                          className='px-4 w-full py-2 lg:text-lg font-medium rounded-md shadow-md bg-gray-900 text-gray-100 focus:ring-2 ring-offset-4 ring-primary'
+                          {...getInputProps({
+                            placeholder: 'Type New Location...',
+                          })}
+                        />
+
+                        <div className='mt-6 md:mt-8 lg:mt-10'>
+                          {loading ? (
+                            <p className='text-gray-700 text-sm'>
+                              Loading Places...
+                            </p>
+                          ) : null}
+
+                          {suggestions.map((suggestion) => {
+                            const className = suggestion.active
+                              ? 'bg-secondary text-gray-100 py-2 px-3'
+                              : 'bg-gray-100 text-primary py-2 px-3';
+                            return (
+                              <ul
+                                {...getSuggestionItemProps(suggestion, {
+                                  className,
+                                })}
+                              >
+                                <li className='mb-3 mb:mb-5 lg:text-lg font-medium hover:cursor-pointer'>
+                                  {suggestion.description}
+                                </li>
+                              </ul>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                {/*footer*/}
-                <div className='flex items-center justify-end p-6 border-t border-solid rounded-b border-blueGray-200'>
-                  <button
-                    className='px-6 py-2 mb-1 mr-1 text-sm font-bold text-red-500 uppercase transition-all duration-150 ease-linear outline-none background-transparent focus:outline-none'
-                    type='button'
-                    onClick={() => setShowModal(false)}
-                  >
-                    Close
-                  </button>
-                  <button
-                    className='px-6 py-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-emerald-500 active:bg-emerald-600 hover:shadow-lg focus:outline-none'
-                    type='button'
-                    onClick={() => setShowModal(false)}
-                  >
-                    Save Changes
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='fixed inset-0 z-40 bg-primary opacity-80'></div>
+                <div className='fixed inset-0 z-40 bg-primary opacity-80'></div>
+              </>
+            )}
+          </PlacesAutocomplete>
         </>
       ) : (
         ''
