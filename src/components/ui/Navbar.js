@@ -51,8 +51,6 @@ const Navbar = () => {
     window.location.reload(false);
   };
 
-  console.log(showModal);
-
   return (
     <>
       <div className='fixed top-0 left-0 z-50 w-full shadow-lg opacity-100 bg-secondary'>

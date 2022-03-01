@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, { useContext, useState, useRef } from 'react';
 import { Restaurants } from '../../context/restaurantsContext';
 import RestaurantList from './allRestaurants.js/RestaurantList';

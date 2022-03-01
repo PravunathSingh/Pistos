@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Auth } from './authContext';
-import NotLoggedInCart from '../components/mycart/NotLoggedInCart';
+// import NotLoggedInCart from '../components/mycart/NotLoggedInCart';
 
 export const Cart = createContext({
   cart: [],
