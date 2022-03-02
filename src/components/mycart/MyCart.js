@@ -9,6 +9,7 @@ import pie from '../../assests/pie.png';
 import EmptyCart from './EmptyCart';
 import { Auth } from '../../context/authContext';
 import NotLoggedInCart from './NotLoggedInCart';
+import { Link } from 'react-router-dom';
 
 const MyCart = () => {
   const cartCtx = useContext(Cart);
@@ -47,11 +48,13 @@ const MyCart = () => {
 
           {cartList}
 
-          <div className='max-w-full mx-auto my-12 md:ml-auto md:mt-10 lg:mt-16 md:max-w-max'>
-            <button className='w-full px-8 py-3 text-lg font-medium text-gray-900 transition-all duration-300 rounded-lg hover:text md:w-auto bg-cta md:text-xl hover:bg-cta-dark hover:scale-110 focus:ring-2 ring-offset-2 ring-cta-dark'>
-              Proceed To Checkout
-            </button>
-          </div>
+          <Link to='/checkout'>
+            <div className='max-w-full mx-auto my-12 md:ml-auto md:mt-10 lg:mt-16 md:max-w-max'>
+              <button className='w-full px-8 py-3 text-lg font-medium text-gray-900 transition-all duration-300 rounded-lg hover:text md:w-auto bg-cta md:text-xl hover:bg-cta-dark hover:scale-110 focus:ring-2 ring-offset-2 ring-cta-dark'>
+                Proceed To Checkout
+              </button>
+            </div>
+          </Link>
 
           <div className='relative'>
             <img

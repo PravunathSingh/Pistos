@@ -24,6 +24,8 @@ import BlogDetailsPage from './pages/BlogDetailsPage';
 import MycartPage from './pages/MycartPage';
 import Wishlist from './pages/Wishlist';
 import Navbar from './components/ui/Navbar';
+import Payment from './pages/Payment';
+import Checkout from './pages/Checkout';
 
 const App = () => {
   const authCtx = useContext(Auth);
@@ -43,6 +45,7 @@ const App = () => {
           />
           <Route path='/genie' element={<Genie />} />
           <Route path='/cart' element={<MycartPage />} />
+          <Route path='/checkout' element={<Checkout />} />
           <Route path='/wishlist' element={<Wishlist />} />
           {!isLoggedIn && <Route path='/signup' element={<Signup />} />}
           {!isLoggedIn && <Route path='/signin' element={<SignIn />} />}
@@ -58,6 +61,7 @@ const App = () => {
           <Route path='/news' element={<AllBlogs />} />
           <Route path='/news/newsDetails/:id' element={<BlogDetailsPage />} />
           <Route path='/profile/orders' element={<TrackOrder />} />
+          <Route path='/payment' element={<Payment />} />
 
           {/* <Route path='/imgUpload' element={<ImgUpload />} /> */}
           <Route path='*' element={<Error404 />} />

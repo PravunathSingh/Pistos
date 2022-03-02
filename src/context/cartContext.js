@@ -33,25 +33,29 @@ const CartProvider = ({ children }) => {
   };
 
   const addToCart = async (product_id, quantity) => {
-    var data = JSON.stringify({
-      product_id: product_id,
-      quantity: quantity,
-    });
+    if (quantity === 0) {
+      console.log(quantity);
+    } else {
+      var data = JSON.stringify({
+        product_id: product_id,
+        quantity: quantity,
+      });
 
-    let config = {
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    const res = await axios.post(
-      'https://achievexsolutions.in/etiano/api/auth/cart',
-      data,
-      config
-    );
-    const resData = await res.data.data;
+      let config = {
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const res = await axios.post(
+        'https://achievexsolutions.in/etiano/api/auth/cart',
+        data,
+        config
+      );
+      const resData = await res.data.data;
 
-    console.log(resData);
+      console.log(resData);
+    }
   };
 
   useEffect(() => {

@@ -27,6 +27,9 @@ const ProductItem = ({ product }) => {
   const addToCart = () => {
     if (!token) {
       alert('Not Signed In! Please Signin to continue shopping');
+    } else if (quantity === 0) {
+      alert('Item Qunatity Cannot Be Zero!');
+      return;
     }
     const stringQuantity = quantity.toString();
     const jsonQuantity = JSON.stringify(stringQuantity);
