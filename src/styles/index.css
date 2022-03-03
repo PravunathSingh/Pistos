@@ -3403,9 +3403,6 @@ textarea.form-control.is-invalid {
 .mb-4 {
 	margin-bottom: 1rem;
 }
-.mr-10 {
-	margin-right: 2.5rem;
-}
 .mt-32 {
 	margin-top: 8rem;
 }
@@ -4876,10 +4873,6 @@ textarea.form-control.is-invalid {
 
 	.xl\:-top-56 {
 		top: -14rem;
-	}
-
-	.xl\:mb-0 {
-		margin-bottom: 0px;
 	}
 
 	.xl\:block {
