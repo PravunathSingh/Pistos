@@ -30,7 +30,7 @@ const SignIn = () => {
     setLoading(true);
 
     const response = await axios.post(
-      'https://achievexsolutions.in/etiano/api/auth/login',
+      'https://achievexsolutions.in/current_work/eatiano/api/auth/login',
       {
         email: emailRef.current.value,
         password: passwordRef.current.value,

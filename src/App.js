@@ -37,7 +37,7 @@ const App = () => {
       <ScrollToTop>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
+          {isLoggedIn && <Route path='/about' element={<About />} />}
           <Route path='/menu' element={<Menu />} />
           <Route
             path='/menu/restaurant/:id'
