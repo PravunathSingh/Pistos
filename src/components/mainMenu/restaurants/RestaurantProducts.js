@@ -13,7 +13,7 @@ const RestaurantProducts = () => {
   useEffect(() => {
     const getProducts = async () => {
       const res = await axios.get(
-        `https://achievexsolutions.in/etiano/api/restaurant_product/${id}`
+        `https://achievexsolutions.in/current_work/eatiano/api/restaurant_product/${id}`
       );
 
       const resData = await res.data;
@@ -110,6 +110,7 @@ const RestaurantProducts = () => {
 
       <ProductList
         products={searchTerm.length < 1 ? sortedProducts : searchProducts}
+        restaurant_id={id}
       />
     </div>
   );

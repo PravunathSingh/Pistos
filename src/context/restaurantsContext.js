@@ -1,5 +1,6 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { Location } from './locationContext';
 
 export const Restaurants = createContext({
   allRestaurants: [],
@@ -7,15 +8,24 @@ export const Restaurants = createContext({
 
 const RestaurantsProvider = ({ children }) => {
   const [restaurants, setRestaurants] = useState([]);
+  const locationCtx = useContext(Location);
+
+  const lat = locationCtx.lat;
+  const lng = locationCtx.long;
+
+  console.log(lat);
 
   useEffect(() => {
     const getAllRestaurants = async () => {
       const res = await axios.get(
-        'https://achievexsolutions.in/etiano/api/all_restaurant'
+        'https://achievexsolutions.in/current_work/eatiano/api/all_restaurant',
+        {
+          params: { lat: lat, lng: lng },
+        }
       );
 
-      const resData = await res.data;
-      setRestaurants(resData.data);
+      const resData = res.data.data.data;
+      setRestaurants(resData);
     };
 
     getAllRestaurants();

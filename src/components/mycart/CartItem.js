@@ -5,18 +5,25 @@ import React, { useContext } from 'react';
 import { Cart } from '../../context/cartContext';
 
 const CartItem = ({ item }) => {
+  const productImageSrc = `https://achievexsolutions.in/current_work/eatiano${item.product_image}`;
   const cartCtx = useContext(Cart);
   const quantity = item.quantity.replace(/"/g, "'").replace(/'/g, '');
   const deleteProduct = () => {
-    cartCtx.deleteProduct(item.product_id);
+    cartCtx.deleteProduct(item.cart_id);
   };
+
+  console.log(item.product_id);
 
   return (
     <section>
       <div className='flex justify-between gap-8 mb-6 mt-14 md:mb-10 lg:mb-14'>
         <div className='grid gap-6 sm:flex'>
           <div>
-            <img src={item.product_image} alt='' className='' />
+            <img
+              src={productImageSrc}
+              alt=''
+              className='object-cover w-40 h-40'
+            />
           </div>
           <div className='flex flex-col justify-between'>
             <h6 className='mb-3 text-xl font-medium text-gray-100 md:text-2xl lg:text-3xl '>
@@ -39,7 +46,7 @@ const CartItem = ({ item }) => {
 
         <div className='flex flex-col justify-between'>
           <h6 className='text-lg font-medium text-gray-100'>
-            Total Price:
+            Cart Price:
             <span className='text-brand-text'>
               {' '}
               Rs {item.product_selling_price * quantity}

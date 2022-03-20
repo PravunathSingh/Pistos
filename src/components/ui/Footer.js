@@ -37,7 +37,7 @@ const Footer = () => {
 
           <div className='my-8'>
             <h6 className='mb-5 text-lg font-medium text-center text-gray-100 md:text-xl md:mb-10'>
-              Our Menus
+              Platform
             </h6>
             <ul>
               <Link to='/genie'>
@@ -45,15 +45,16 @@ const Footer = () => {
                   Genie
                 </li>
               </Link>
-              <li className='mb-3 text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text md:mb-5'>
-                Lunch
-              </li>
-              <li className='mb-3 text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text md:mb-5'>
-                Dinner
-              </li>
-              <li className='text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text'>
-                Catering
-              </li>
+              <Link to='/wishlist'>
+                <li className='mb-3 text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text md:mb-5'>
+                  Wishlist
+                </li>
+              </Link>
+              <Link to='/privacyPolicy'>
+                <li className='text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text'>
+                  Privacy Policy
+                </li>
+              </Link>
             </ul>
           </div>
 
@@ -75,11 +76,6 @@ const Footer = () => {
               <li className='mb-3 text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text md:mb-5'>
                 Terms of Use
               </li>
-              <Link to='/privacyPolicy'>
-                <li className='text-center text-gray-400 transition-all duration-200 cursor-pointer md:text-lg hover:text-brand-text'>
-                  Privacy Policy
-                </li>
-              </Link>
             </ul>
           </div>
 

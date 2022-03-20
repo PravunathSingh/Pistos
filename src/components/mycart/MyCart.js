@@ -10,6 +10,7 @@ import EmptyCart from './EmptyCart';
 import { Auth } from '../../context/authContext';
 import NotLoggedInCart from './NotLoggedInCart';
 import { Link } from 'react-router-dom';
+import CartList from './CartList';
 
 const MyCart = () => {
   const cartCtx = useContext(Cart);
@@ -31,10 +32,6 @@ const MyCart = () => {
   //   });
   // }
 
-  const cartList = cartItems.map((item) => {
-    return <CartItem key={item.cart_id} item={item} />;
-  });
-
   return (
     <>
       {isLoggedIn && (
@@ -46,7 +43,7 @@ const MyCart = () => {
             </h6>
           </div>
 
-          {cartList}
+          <CartList cartItems={cartItems} />
 
           <Link to='/checkout'>
             <div className='max-w-full mx-auto my-12 md:ml-auto md:mt-10 lg:mt-16 md:max-w-max'>

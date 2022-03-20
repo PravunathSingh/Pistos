@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const BlogItem = ({ blog }) => {
+  const blogImgSrc = `https://achievexsolutions.in/current_work/eatiano${blog.blog_main_image}`;
   return (
     <div className='mb-8 md:mb-14'>
+      <img src={blogImgSrc} alt='' className='w-full mb-3 md:mb-6' />
       <h2 className='mb-4 text-xl font-medium text-gray-200 md:mb-6 md:text-2xl'>
         {blog.blog_heading}
       </h2>

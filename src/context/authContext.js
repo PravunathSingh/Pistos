@@ -44,6 +44,8 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(initialToken);
   const userIsLoggedIn = !!token;
 
+  console.log(userIsLoggedIn);
+
   const logout = useCallback(() => {
     setToken(null);
     localStorage.removeItem('token');

@@ -55,7 +55,7 @@ const RestaurantsMenu = () => {
           Restaurants Around The World
         </h2>
 
-        <div className='flex flex-wrap justify-center gap-4 lg:justify-between'>
+        <div className='flex justify-center gap-4 lg:justify-between'>
           <form onSubmit={searchFormHandler}>
             <input
               type='text'

@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 
 const RestaurantItem = ({ restaurantData }) => {
   const restaurantRating = restaurantData.restaurant_rating / 10;
+  const restaurantImageSrc = `https://achievexsolutions.in/current_work/eatiano${restaurantData.restaurant_image}`;
   return (
     <div>
       <div>
         <img
-          src={restaurantData.restaurant_image}
+          src={restaurantImageSrc}
           alt=''
-          className='mb-6 rounded-xl md:mb-8'
+          className='w-full mb-6 rounded-xl md:mb-8'
         />
       </div>
       <h6 className='mb-3 text-xl font-medium text-center text-gray-100 lg:text-2xl'>

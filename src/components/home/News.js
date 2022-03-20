@@ -1,15 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NewsCard from '../ui/NewsCard';
-import news1 from '../../assests/news1.png';
-import news2 from '../../assests/news2.png';
-import news3 from '../../assests/news3.png';
 import burger from '../../assests/burger.png';
 import bigLegpiece from '../../assests/bigLegpiece.png';
+import axios from 'axios';
 
 const News = () => {
+  const [news, setNews] = useState([]);
+  const [threeNews, setThreeNews] = useState([]);
+
+  useEffect(() => {
+    const getNews = async () => {
+      const result = await axios.get(
+        'https://achievexsolutions.in/etiano/api/all_blogs'
+      );
+
+      const resData = result.data.data;
+      setNews(resData);
+    };
+
+    getNews();
+
+    const slicedNews = news.slice(0, 3);
+    setThreeNews(slicedNews);
+  }, []);
+
+  const newsSection = threeNews.map((news) => {
+    return (
+      <div className='grid max-w-6xl gap-10 mx-auto md:grid-cols-3 place-content-center place-items-center'>
+        <NewsCard
+          img={`https://achievexsolutions.in/current_work/eatiano${news.blog_main_image}`}
+          title={news.blog_heading}
+          body={news.blog_subheading}
+        />
+      </div>
+    );
+  });
+
+  console.log(threeNews);
+
   return (
-    <div className='container font-rubik mt-20 md:mt-28 lg:mt-40 relative'>
-      <div className='max-w-max hidden lg:block'>
+    <div className='container relative mt-20 font-rubik md:mt-28 lg:mt-40'>
+      <div className='hidden max-w-max lg:block'>
         <img
           src={burger}
           alt=''
@@ -17,37 +48,21 @@ const News = () => {
         />
       </div>
 
-      <div className='max-w-max hidden lg:block'>
+      <div className='hidden max-w-max lg:block'>
         <img
           src={bigLegpiece}
           alt=''
           className='absolute -bottom-48 right-4 w-72 h-72'
         />
       </div>
-      <h6 className='text-brand-text mb-8 md:mb-12 text-2xl md:text-3xl text-center font-medium'>
+      <h6 className='mb-8 text-2xl font-medium text-center text-brand-text md:mb-12 md:text-3xl'>
         News
       </h6>
-      <h4 className='text-center mb-8 md:mb-12 text-3xl md:text-4xl font-medium text-gray-200'>
+      <h4 className='mb-8 text-3xl font-medium text-center text-gray-200 md:mb-12 md:text-4xl'>
         Latest Foodieee News
       </h4>
 
-      <div className='grid mx-auto md:grid-cols-3 gap-10 place-content-center place-items-center max-w-6xl'>
-        <NewsCard
-          img={news1}
-          title='Spain Appetizer'
-          body='Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt!'
-        />
-        <NewsCard
-          img={news2}
-          title='Wine & Cheese'
-          body='Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt!'
-        />
-        <NewsCard
-          img={news3}
-          title='Cup of Coffee'
-          body='Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt!'
-        />
-      </div>
+      {newsSection}
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { Auth } from './authContext';
 export const Wishlist = createContext({
   wishlist: [],
   wishlistLength: 0,
-  addToWishlist: (product_id) => {},
+  addToWishlist: (product_id, restaurant_id) => {},
   deleteFromWishlist: (product_id) => {},
   moveToCart: (product_id) => {},
 });
@@ -15,20 +15,22 @@ const WishlistProvider = ({ children }) => {
   const authCtx = useContext(Auth);
   const token = authCtx.token;
 
-  const addToWishlist = (product_id) => {
+  const addToWishlist = (product_id, restaurant_id) => {
     var data = JSON.stringify({
       product_id: product_id,
+      restaurant_id: restaurant_id,
     });
 
     let config = {
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
       },
     };
 
     axios.post(
-      'https://achievexsolutions.in/etiano/api/auth/wishlist',
+      'https://achievexsolutions.in/current_work/eatiano/api/auth/wishlist',
       data,
       config
     );
@@ -43,7 +45,7 @@ const WishlistProvider = ({ children }) => {
       };
 
       const res = await axios.get(
-        'https://achievexsolutions.in/etiano/api/auth/wishlist',
+        'https://achievexsolutions.in/current_work/eatiano/api/auth/wishlist',
         config
       );
 
@@ -62,9 +64,12 @@ const WishlistProvider = ({ children }) => {
       },
     };
     const res = await axios.delete(
-      `https://achievexsolutions.in/etiano/api/auth/wishlist/${product_id}`,
+      `https://achievexsolutions.in/current_work/eatiano/api/auth/wishlist/${product_id}`,
       config
     );
+
+    const filteredWishlist = wishlist.filter((item) => item.id !== product_id);
+    setWishlist(filteredWishlist);
     console.log(res);
   };
 

@@ -5,7 +5,7 @@
 */
 
 import React, { useState, useRef, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Footer from '../components/ui/Footer';
 import taco from '../assests/taco.png';
@@ -111,9 +111,11 @@ const SignIn = () => {
                       required
                       ref={passwordRef}
                     />
-                    <p className='mt-3 text-sm text-gray-300 transition-all duration-200 cursor-pointer lg:text-base hover:text-gray-400'>
-                      Forgot Password
-                    </p>
+                    <Link to='/forgotPassword'>
+                      <p className='mt-3 text-sm text-gray-300 transition-all duration-200 cursor-pointer lg:text-base hover:text-gray-400'>
+                        Forgot Password
+                      </p>
+                    </Link>
                   </div>
 
                   {!loading && (

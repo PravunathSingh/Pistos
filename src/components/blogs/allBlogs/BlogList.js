@@ -7,7 +7,7 @@ const BlogList = ({ allBlogs }) => {
   });
 
   return (
-    <div className='grid mb-20 md:mb-28 gap-14 lg:gap-8 md:grid-cols-2 lg:grid-cols-3'>
+    <div className='grid mb-20 md:mb-28 gap-14 lg:gap-24 md:grid-cols-3 lg:grid-cols-4'>
       {allArticles}
     </div>
   );

@@ -10,7 +10,6 @@ import SignIn from './pages/SignIn';
 import TrackOrder from './pages/TrackOrder';
 import MyProfile from './pages/MyProfile';
 import Home from './pages/Home';
-// import ImgUpload from './components/misc/ImgUpload';
 import Privacy from './pages/Privacy';
 import About from './pages/About';
 import Genie from './pages/Genie';
@@ -26,6 +25,9 @@ import Wishlist from './pages/Wishlist';
 import Navbar from './components/ui/Navbar';
 import Payment from './pages/Payment';
 import Checkout from './pages/Checkout';
+import ForgotPassword from './pages/ForgotPassword';
+import CheckOTP from './pages/CheckOTP';
+import SetNewPassword from './pages/SetNewPassword';
 
 const App = () => {
   const authCtx = useContext(Auth);
@@ -59,11 +61,12 @@ const App = () => {
 
           <Route path='/privacyPolicy' element={<Privacy />} />
           <Route path='/news' element={<AllBlogs />} />
+          <Route path='/forgotPassword' element={<ForgotPassword />} />
+          <Route path='/checkOTP' element={<CheckOTP />} />
+          <Route path='/setNewPassword' element={<SetNewPassword />} />
           <Route path='/news/newsDetails/:id' element={<BlogDetailsPage />} />
           <Route path='/profile/orders' element={<TrackOrder />} />
           <Route path='/payment' element={<Payment />} />
-
-          {/* <Route path='/imgUpload' element={<ImgUpload />} /> */}
           <Route path='*' element={<Error404 />} />
         </Routes>
       </ScrollToTop>

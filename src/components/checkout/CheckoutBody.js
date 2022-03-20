@@ -1,6 +1,22 @@
 import React, { useContext, useState } from 'react';
 import { Cart } from '../../context/cartContext';
 
+function loadScript(src) {
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => {
+      resolve(true);
+    };
+    script.onerror = () => {
+      resolve(false);
+    };
+    document.body.appendChild(script);
+  });
+}
+
+const __DEV__ = document.domain === 'localhost';
+
 const CheckoutBody = () => {
   const [checkoutForm, setCheckoutForm] = useState({
     name: '',
@@ -29,9 +45,17 @@ const CheckoutBody = () => {
     setCheckoutForm({ ...checkoutForm, [e.target.name]: e.target.value });
   };
 
-  const submitOrder = (e) => {
+  const submitOrder = async (e) => {
     e.preventDefault();
-    var data = {
+    const res = await loadScript(
+      'https://checkout.razorpay.com/v1/checkout.js'
+    );
+
+    if (!res) {
+      alert('Razorpay SDK failed to load. Are you online?');
+      return;
+    }
+    const data = {
       name: checkoutForm.name,
       phone: checkoutForm.phone,
       email: checkoutForm.email,
@@ -40,14 +64,16 @@ const CheckoutBody = () => {
       pin: checkoutForm.pin,
     };
 
-    var options = {
-      key: 'rzp_test_UrYqb5LGWAWmJT', // Enter the Key ID generated from the Dashboard
+    const options = {
+      key: __DEV__ ? 'rzp_test_UrYqb5LGWAWmJT' : 'PRODUCTION_KEY', // Enter the Key ID generated from the Dashboard
       amount: totalBill * 100,
       name: 'Eatiano',
       description: 'Test Transaction',
-      // order_id: 'order_9A33XWu170gUtm', //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      order_id: 'order_J9IJtWqr4xaFRz', //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       handler: function (response) {
         alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature);
       },
       prefill: {
         name: data.name,
@@ -56,14 +82,16 @@ const CheckoutBody = () => {
       },
       notes: {
         address: data.address,
+        country: data.country,
+        pin: data.pin,
       },
       theme: {
         color: '#2F343A',
       },
     };
 
-    const razorPay = new window.Razorpay(options);
-    razorPay.open();
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
   };
 
   return (

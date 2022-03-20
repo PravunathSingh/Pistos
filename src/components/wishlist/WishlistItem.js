@@ -3,6 +3,7 @@ import { Wishlist } from '../../context/wishlistContext';
 import { Cart } from '../../context/cartContext';
 
 const WishlistItem = ({ item }) => {
+  const productImageSrc = `https://achievexsolutions.in/current_work/eatiano${item.product_image}`;
   const wishListCtx = useContext(Wishlist);
   const cartCtx = useContext(Cart);
 
@@ -20,7 +21,7 @@ const WishlistItem = ({ item }) => {
       <div className='flex justify-between gap-8 mb-6 mt-14 md:mb-10 lg:mb-14'>
         <div className='grid gap-6 sm:flex'>
           <div>
-            <img src={item.product_image} alt='' className='' />
+            <img src={productImageSrc} alt='' className='' />
             <h6 className='mb-3 text-xl font-medium text-gray-100 md:text-2xl lg:text-3xl '>
               {item.product_name}
             </h6>

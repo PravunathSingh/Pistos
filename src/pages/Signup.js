@@ -3,13 +3,15 @@
 2. Add form validation.
 */
 
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import Footer from '../components/ui/Footer';
 import taco from '../assests/taco.png';
 import burger from '../assests/burger.png';
 import omlet from '../assests/omlet.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import AuthNav from '../components/ui/AuthNav';
+import axios from 'axios';
+import { Auth } from '../context/authContext';
 
 const Signup = () => {
   const nameRef = useRef();
@@ -17,24 +19,39 @@ const Signup = () => {
   const phoneRef = useRef();
   const passwordRef = useRef();
 
-  const register = (e) => {
-    e.preventDefault();
-    const name = nameRef.current.value;
-    const email = emailRef.current.value;
-    const phone = phoneRef.current.value;
-    const password = passwordRef.current.value;
+  const history = useNavigate();
 
-    console.log({
-      name,
-      email,
-      phone,
-      password,
-    });
+  const authCtx = useContext(Auth);
+
+  const register = async (e) => {
+    e.preventDefault();
+
+    const response = await axios.post(
+      'https://achievexsolutions.in/current_work/eatiano/api/auth/signup',
+      {
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+        name: nameRef.current.value,
+        phone: phoneRef.current.value,
+      }
+    );
 
     nameRef.current.value = '';
     emailRef.current.value = '';
     passwordRef.current.value = '';
     phoneRef.current.value = '';
+
+    if (response.status === 200) {
+      const data = await response.data;
+      const expirationTime = new Date(
+        new Date().getTime() + +data.expires_in * 1000
+      );
+      authCtx.login(data.access_token, expirationTime.toISOString());
+      console.log(data);
+      history('/', { replace: true });
+    } else {
+      return alert('Error');
+    }
   };
 
   return (

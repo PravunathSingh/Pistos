@@ -6,17 +6,17 @@ import { Auth } from './authContext';
 export const Cart = createContext({
   cart: [],
   cartLength: 0,
-  addToCart: (productId, quantity) => {},
-  deleteProduct: (productId) => {},
+  addToCart: (productId, quantity, restaurant_id) => {},
+  deleteProduct: (cart_id) => {},
   emptyCart: () => {},
 });
 
 const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cart, setCartItems] = useState([]);
   const authCtx = useContext(Auth);
   const token = authCtx.token;
 
-  const deleteProduct = async (product_id) => {
+  const deleteProduct = async (id) => {
     let config = {
       headers: {
         'content-type': 'application/json',
@@ -25,37 +25,14 @@ const CartProvider = ({ children }) => {
     };
 
     const res = await axios.delete(
-      `https://achievexsolutions.in/etiano/api/auth/cart/${product_id}`,
+      `https://achievexsolutions.in/current_work/eatiano/api/auth/cart/${id}`,
       config
     );
+
+    const filteredCart = cart.filter((cartItem) => cartItem.cart_id !== id);
+    setCartItems(filteredCart);
     const resData = await res.data.data;
     console.log(resData);
-  };
-
-  const addToCart = async (product_id, quantity) => {
-    if (quantity === 0) {
-      console.log(quantity);
-    } else {
-      var data = JSON.stringify({
-        product_id: product_id,
-        quantity: quantity,
-      });
-
-      let config = {
-        headers: {
-          'content-type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const res = await axios.post(
-        'https://achievexsolutions.in/etiano/api/auth/cart',
-        data,
-        config
-      );
-      const resData = await res.data.data;
-
-      console.log(resData);
-    }
   };
 
   useEffect(() => {
@@ -66,7 +43,7 @@ const CartProvider = ({ children }) => {
         },
       };
       const res = await axios.get(
-        'https://achievexsolutions.in/etiano/api/auth/cart',
+        'https://achievexsolutions.in/current_work/eatiano/api/auth/cart',
         config
       );
 
@@ -77,11 +54,46 @@ const CartProvider = ({ children }) => {
     getCartItems();
   }, [token]);
 
-  console.log(cartItems);
+  const addToCart = async (product_id, quantity, restaurant_id) => {
+    if (quantity === 0) {
+      console.log(quantity);
+    } else {
+      var data = JSON.stringify({
+        product_id: product_id,
+        quantity: quantity,
+        restaurant_id: restaurant_id,
+      });
+
+      let config = {
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
+        },
+      };
+      const res = await axios.post(
+        'https://achievexsolutions.in/current_work/eatiano/api/auth/cart',
+        data,
+        config
+      );
+      const resData = res;
+
+      console.log(resData);
+      // if (resData.status === 200) {
+      //   alert('Added to cart successfully');
+      //   window.location.reload();
+      // } else {
+      //   alert('Try Again');
+      // }
+      window.location.reload();
+    }
+  };
+
+  console.log(cart);
 
   const cartValue = {
-    cart: cartItems,
-    cartLength: cartItems.length,
+    cart: cart,
+    cartLength: cart.length,
     addToCart: addToCart,
     deleteProduct: deleteProduct,
   };
