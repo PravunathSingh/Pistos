@@ -69,7 +69,7 @@ const CheckoutBody = () => {
       amount: totalBill * 100,
       name: 'Eatiano',
       description: 'Test Transaction',
-      order_id: 'order_J9IJtWqr4xaFRz', //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      order_id: 'order_J9bJ3RZOTeu4kw', //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       handler: function (response) {
         alert(response.razorpay_payment_id);
         alert(response.razorpay_order_id);
