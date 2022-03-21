@@ -15,7 +15,7 @@ function loadScript(src) {
   });
 }
 
-const __DEV__ = document.domain === 'localhost';
+// const __DEV__ = document.domain === 'localhost';
 
 const CheckoutBody = () => {
   const [checkoutForm, setCheckoutForm] = useState({
@@ -65,7 +65,7 @@ const CheckoutBody = () => {
     };
 
     const options = {
-      key: __DEV__ ? 'rzp_test_UrYqb5LGWAWmJT' : 'PRODUCTION_KEY', // Enter the Key ID generated from the Dashboard
+      key: 'rzp_test_UrYqb5LGWAWmJT', // Enter the Key ID generated from the Dashboard
       amount: totalBill * 100,
       name: 'Eatiano',
       description: 'Test Transaction',
