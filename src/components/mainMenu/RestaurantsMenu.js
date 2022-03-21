@@ -55,12 +55,12 @@ const RestaurantsMenu = () => {
           Restaurants Around The World
         </h2>
 
-        <div className='flex justify-center gap-4 lg:justify-between'>
+        <div className='flex flex-wrap items-center justify-center gap-4 lg:justify-between'>
           <form onSubmit={searchFormHandler}>
             <input
               type='text'
               placeholder='Search Restaurants...'
-              className='px-4 py-2 text-gray-200 border-2 rounded-md border-secondary lg:text-lg bg-primary focus:ring-2 ring-offset-2 ring-offset-secondary'
+              className='w-full px-4 py-2 text-gray-200 border-2 rounded-md border-secondary lg:text-lg bg-primary focus:ring-2 ring-offset-2 ring-offset-secondary'
               ref={searchRef}
               onChange={searchHandler}
               value={searchTerm}
