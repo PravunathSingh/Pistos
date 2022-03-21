@@ -12,7 +12,7 @@ const RestaurantList = ({ allRestaurants }) => {
   });
 
   return (
-    <div className='grid grid-cols-2 gap-20 mb-16 md:mb-28 lg:mb-40 md:grid-cols-3 lg:grid-cols-4 place-content-center place-items-center'>
+    <div className='grid gap-20 mb-16 md:mb-28 lg:mb-40 md:grid-cols-3 lg:grid-cols-4 place-content-center place-items-center'>
       {restaurantsList}
     </div>
   );
