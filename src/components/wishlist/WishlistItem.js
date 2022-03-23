@@ -21,7 +21,11 @@ const WishlistItem = ({ item }) => {
       <div className='flex justify-between gap-8 mb-6 mt-14 md:mb-10 lg:mb-14'>
         <div className='grid gap-6 sm:flex'>
           <div>
-            <img src={productImageSrc} alt='' className='' />
+            <img
+              src={productImageSrc}
+              alt=''
+              className='object-cover w-32 h-32 mb-4'
+            />
             <h6 className='mb-3 text-xl font-medium text-gray-100 md:text-2xl lg:text-3xl '>
               {item.product_name}
             </h6>

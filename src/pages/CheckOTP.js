@@ -32,6 +32,7 @@ const CheckOTP = () => {
       email: '',
       otp: '',
     });
+    localStorage.setItem('passwordToken', resData.forget_password_token);
     history('/setNewPassword', { replace: true });
   };
 

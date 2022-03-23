@@ -3409,6 +3409,9 @@ textarea.form-control.is-invalid {
 .mb-4 {
 	margin-bottom: 1rem;
 }
+.mt-10 {
+	margin-top: 2.5rem;
+}
 .mt-32 {
 	margin-top: 8rem;
 }
@@ -3420,9 +3423,6 @@ textarea.form-control.is-invalid {
 }
 .mt-8 {
 	margin-top: 2rem;
-}
-.mt-10 {
-	margin-top: 2.5rem;
 }
 .mb-24 {
 	margin-bottom: 6rem;
@@ -3490,6 +3490,9 @@ textarea.form-control.is-invalid {
 .h-0 {
 	height: 0px;
 }
+.h-32 {
+	height: 8rem;
+}
 .h-8 {
 	height: 2rem;
 }
@@ -3525,6 +3528,9 @@ textarea.form-control.is-invalid {
 }
 .w-6 {
 	width: 1.5rem;
+}
+.w-32 {
+	width: 8rem;
 }
 .w-8 {
 	width: 2rem;
@@ -4019,6 +4025,10 @@ textarea.form-control.is-invalid {
 	--tw-text-opacity: 1;
 	color: rgba(143, 206, 11, var(--tw-text-opacity));
 }
+.text-blue-300 {
+	--tw-text-opacity: 1;
+	color: rgba(147, 197, 253, var(--tw-text-opacity));
+}
 .text-gray-600 {
 	--tw-text-opacity: 1;
 	color: rgba(75, 85, 99, var(--tw-text-opacity));
@@ -4177,6 +4187,10 @@ textarea.form-control.is-invalid {
 .hover\:text-gray-400:hover {
 	--tw-text-opacity: 1;
 	color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+.hover\:text-blue-500:hover {
+	--tw-text-opacity: 1;
+	color: rgba(59, 130, 246, var(--tw-text-opacity));
 }
 .hover\:text-brand-text:hover {
 	--tw-text-opacity: 1;

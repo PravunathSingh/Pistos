@@ -15,12 +15,11 @@ const WishlistProvider = ({ children }) => {
   const authCtx = useContext(Auth);
   const token = authCtx.token;
 
-  const addToWishlist = (product_id, restaurant_id) => {
+  const addToWishlist = async (product_id, restaurant_id) => {
     var data = JSON.stringify({
       product_id: product_id,
       restaurant_id: restaurant_id,
     });
-
     let config = {
       headers: {
         'content-type': 'application/json',
@@ -28,12 +27,12 @@ const WishlistProvider = ({ children }) => {
         Accept: 'application/json',
       },
     };
-
-    axios.post(
+    const res = await axios.post(
       'https://achievexsolutions.in/current_work/eatiano/api/auth/wishlist',
       data,
       config
     );
+    console.log(res);
   };
 
   useEffect(() => {
@@ -49,7 +48,9 @@ const WishlistProvider = ({ children }) => {
         config
       );
 
-      const resData = await res.data.data;
+      const resData = res.data.data;
+
+      console.log(resData);
       setWishlist(resData);
     };
 
@@ -68,7 +69,9 @@ const WishlistProvider = ({ children }) => {
       config
     );
 
-    const filteredWishlist = wishlist.filter((item) => item.id !== product_id);
+    const filteredWishlist = wishlist.filter(
+      (item) => item.product_id !== product_id
+    );
     setWishlist(filteredWishlist);
     console.log(res);
   };
@@ -79,6 +82,8 @@ const WishlistProvider = ({ children }) => {
     addToWishlist: addToWishlist,
     deleteFromWishlist: deleteFromWishlist,
   };
+
+  console.log(wishlist);
 
   return (
     <Wishlist.Provider value={wishlistValue}>{children}</Wishlist.Provider>

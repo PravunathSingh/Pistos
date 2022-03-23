@@ -1,5 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Cart } from '../../context/cartContext';
+import { Auth } from '../../context/authContext';
+import axios from 'axios';
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -27,8 +29,14 @@ const CheckoutBody = () => {
     pin: '',
   });
 
+  const [coupons, setCoupons] = useState([]);
+  const [isCouponApplied, setIsCouponApplied] = useState(false);
+
   const cartCtx = useContext(Cart);
   const cartLength = cartCtx.cartLength;
+
+  const authCtx = useContext(Auth);
+  const token = authCtx.token;
 
   const itemArray = [];
   cartCtx.cart.forEach((item) => {
@@ -92,6 +100,42 @@ const CheckoutBody = () => {
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
+  };
+
+  useEffect(() => {
+    const getCoupons = async () => {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const res = await axios.get(
+        'https://achievexsolutions.in/current_work/eatiano/api/auth/coupon',
+        config
+      );
+
+      const resData = await res.data.data;
+
+      console.log(resData);
+      setCoupons(resData);
+    };
+
+    getCoupons();
+  }, []);
+
+  const filteredCoupons = coupons.filter(
+    (coupon) => coupon.condition <= totalBill
+  );
+
+  if (filteredCoupons.length === 0) {
+    console.log('Sorry, no coupons found');
+  } else {
+    console.log(filteredCoupons);
+  }
+
+  const applyCoupon = () => {
+    setIsCouponApplied(true);
   };
 
   return (
@@ -221,11 +265,49 @@ const CheckoutBody = () => {
         </div>
 
         <div className='flex items-center justify-between gap-4 mb-6 md:mb-9'>
-          <h6 className='text-lg text-gray-300 xl:text-2xl'>Total Charges:</h6>
+          <h6 className='text-lg text-gray-300 xl:text-2xl'>Sub Total:</h6>
           <p className='text-lg font-medium text-gray-100 xl:text-2xl'>
             Rs. {totalBill}
           </p>
         </div>
+
+        <div>
+          <h6 className='mt-10 mb-5 text-gray-200 lg:text-lg'>Coupon (s)</h6>
+          {filteredCoupons.length === 0 ? (
+            <div className='p-4 bg-primary'>
+              <p className='font-medium lg:text-lg text-brand-text'>
+                Sorry No Coupons Found! Shop More!!
+              </p>
+            </div>
+          ) : (
+            <div className='flex flex-wrap items-center justify-between gap-4 p-4 bg-primary'>
+              <p className='text-lg lg:text-xl text-cta-dark'>
+                {filteredCoupons[0].coupon_code}: {filteredCoupons[0].discount}%
+              </p>
+              <button
+                className='text-blue-300 hover:text-blue-500 lg:text-lg'
+                onClick={applyCoupon}
+              >
+                Apply!!
+              </button>
+            </div>
+          )}
+        </div>
+
+        {isCouponApplied && (
+          <p className='mt-3 text-sm text-blue-300 lg:text-base'>
+            Coupon Applied
+          </p>
+        )}
+
+        {isCouponApplied && (
+          <div className='flex items-center justify-between gap-4 mt-12 md:mt-16'>
+            <h6 className='text-lg text-gray-300 xl:text-2xl'>Final Price:</h6>
+            <p className='text-lg font-medium text-gray-100 xl:text-2xl'>
+              Rs. {totalBill - (totalBill / 100) * filteredCoupons[0].discount}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -40,13 +40,12 @@ const ProductItem = ({ product, restaurant_id }) => {
   const wishlistHandler = () => {
     if (!token) {
       alert('Not Signed In! Please Signin to continue shopping');
-    } else {
       return;
+    } else {
+      wishListCtx.addToWishlist(product.product_id, restaurant_id);
+      console.log(product.product_id);
+      alert('Item Added To Wishlist!!');
     }
-
-    wishListCtx.addToWishlist(product.product_id, restaurant_id);
-    console.log(product.product_id);
-    alert('Item Added To Wishlist!!');
   };
 
   return (
@@ -64,7 +63,7 @@ const ProductItem = ({ product, restaurant_id }) => {
           {product.product_name}
         </h3>
         <p className='mb-4 text-sm font-light text-center text-gray-300 lg:text-base'>
-          {product.product_desciption}
+          {product.product_description}
         </p>
 
         <p className='mb-4 text-xs italic font-light opacity-80 text-border'>
@@ -135,20 +134,7 @@ const ProductItem = ({ product, restaurant_id }) => {
               className='mt-8 text-brand-text'
               onClick={wishlistHandler}
             >
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                className='w-8 h-8'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
-                />
-              </svg>
+              <i className='fa fa-heart'></i>
             </button>
             <ReactTooltip id='tooltip-bg-wishlist' type='info' />
           </div>

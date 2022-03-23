@@ -16,14 +16,15 @@ const RestaurantProducts = () => {
         `https://achievexsolutions.in/current_work/eatiano/api/restaurant_product/${id}`
       );
 
-      const resData = await res.data;
-
+      const resData = res.data;
+      console.log(resData.data);
       setProducts(resData.data);
-      console.log(products);
     };
 
     getProducts();
   }, []);
+
+  console.log(products);
 
   const sortHandler = (e) => {
     setSortingValue(e.target.value);
