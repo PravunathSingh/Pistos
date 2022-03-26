@@ -28,6 +28,7 @@ import Checkout from './pages/Checkout';
 import ForgotPassword from './pages/ForgotPassword';
 import CheckOTP from './pages/CheckOTP';
 import SetNewPassword from './pages/SetNewPassword';
+import EditProfile from './components/myProfile/EditProfile';
 
 const App = () => {
   const authCtx = useContext(Auth);
@@ -61,6 +62,7 @@ const App = () => {
 
           <Route path='/privacyPolicy' element={<Privacy />} />
           <Route path='/news' element={<AllBlogs />} />
+          <Route path='/editProfile' element={<EditProfile />} />
           <Route path='/forgotPassword' element={<ForgotPassword />} />
           <Route path='/checkOTP' element={<CheckOTP />} />
           <Route path='/setNewPassword' element={<SetNewPassword />} />

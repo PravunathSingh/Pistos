@@ -29,8 +29,14 @@ const CheckoutBody = () => {
     pin: '',
   });
 
+  const [orderData, setOrderData] = useState({});
+
   const [coupons, setCoupons] = useState([]);
   const [isCouponApplied, setIsCouponApplied] = useState(false);
+
+  const applyCoupon = () => {
+    setIsCouponApplied(true);
+  };
 
   const cartCtx = useContext(Cart);
   const cartLength = cartCtx.cartLength;
@@ -55,6 +61,32 @@ const CheckoutBody = () => {
 
   const submitOrder = async (e) => {
     e.preventDefault();
+    const config = {
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const amount = isCouponApplied
+      ? Math.floor(
+          totalBill - (totalBill / 100) * filteredCoupons[0].discount
+        ) * 100
+      : totalBill * 100;
+    console.log(amount);
+
+    let formData = new FormData();
+    formData.append('amount', amount);
+
+    const response = await axios.post(
+      'https://achievexsolutions.in/current_work/eatiano/api/auth/order_id',
+      formData,
+      config
+    );
+
+    const orderData = response.data.data;
+    console.log(orderData);
+
     const res = await loadScript(
       'https://checkout.razorpay.com/v1/checkout.js'
     );
@@ -73,15 +105,13 @@ const CheckoutBody = () => {
     };
 
     const options = {
-      key: 'rzp_test_UrYqb5LGWAWmJT', // Enter the Key ID generated from the Dashboard
-      amount: totalBill * 100,
+      key: 'rzp_test_Su2RqsYhHFrQnI', // Enter the Key ID generated from the Dashboard
+      amount: orderData.amount,
       name: 'Eatiano',
       description: 'Test Transaction',
-      order_id: 'order_J9bJ3RZOTeu4kw', //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      order_id: orderData.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       handler: function (response) {
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+        console.log(response);
       },
       prefill: {
         name: data.name,
@@ -100,6 +130,15 @@ const CheckoutBody = () => {
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
+
+    setCheckoutForm({
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
+      country: '',
+      pin: '',
+    });
   };
 
   useEffect(() => {
@@ -133,10 +172,6 @@ const CheckoutBody = () => {
   } else {
     console.log(filteredCoupons);
   }
-
-  const applyCoupon = () => {
-    setIsCouponApplied(true);
-  };
 
   return (
     <div className='container grid gap-24 my-16 md:my-24 lg:my-40 md:grid-cols-2'>
@@ -304,7 +339,10 @@ const CheckoutBody = () => {
           <div className='flex items-center justify-between gap-4 mt-12 md:mt-16'>
             <h6 className='text-lg text-gray-300 xl:text-2xl'>Final Price:</h6>
             <p className='text-lg font-medium text-gray-100 xl:text-2xl'>
-              Rs. {totalBill - (totalBill / 100) * filteredCoupons[0].discount}
+              Rs.{' '}
+              {Math.floor(
+                totalBill - (totalBill / 100) * filteredCoupons[0].discount
+              )}
             </p>
           </div>
         )}

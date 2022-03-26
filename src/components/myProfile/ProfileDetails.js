@@ -1,20 +1,43 @@
-import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
-import profileLarge from '../../assests/profileLarge.png';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import profile from '../../assests/profile.png';
 import { Auth } from '../../context/authContext';
+import axios from 'axios';
 
 const ProfileDetails = () => {
   const authCtx = useContext(Auth);
+  const token = authCtx.token;
+  const [profileData, setProfileData] = useState({});
 
   const logoutHandler = () => {
     authCtx.logout();
   };
 
+  useEffect(() => {
+    const getProfileData = async () => {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
+        },
+      };
+      const res = await axios.get(
+        'https://achievexsolutions.in/current_work/eatiano/api/auth/me',
+        config
+      );
+
+      const resData = res.data;
+      setProfileData(resData);
+    };
+
+    getProfileData();
+  }, []);
+
   return (
     <div className='font-rubik'>
       <div className='flex flex-wrap items-center justify-start gap-6'>
         <div className='overflow-hidden rounded-full'>
-          <img src={profileLarge} alt='' className='object-center w-28 h-28' />
+          <img src={profile} alt='' className='object-center w-32 h-32' />
         </div>
         <div>
           <h6 className='mb-3 text-xl font-medium text-gray-100 md:text-3xl md:mb-5'>
@@ -36,15 +59,17 @@ const ProfileDetails = () => {
             Profile Details
           </h5>
 
-          <p className='text-sm text-gray-300 transition-all duration-200 cursor-pointer max-w-max md:text-base hover:text-brand-text'>
-            <i className='fa fa-pencil'></i> Edit Profile
-          </p>
+          <Link to='/editProfile'>
+            <p className='text-sm text-gray-300 transition-all duration-200 cursor-pointer max-w-max md:text-base hover:text-brand-text'>
+              <i className='fa fa-pencil'></i> Edit Profile
+            </p>
+          </Link>
         </div>
 
         <div className='grid gap-8 place-content-between sm:grid-cols-2'>
           <div className='mb-2 md:mb-8'>
             <h6 className='text-lg text-gray-100 md:text-xl'>Name</h6>
-            <p className='text-gray-400 md:text-lg'>Pravunath Singh</p>
+            <p className='text-gray-400 md:text-lg'>{profileData.name}</p>
           </div>
 
           <div className='mb-2 md:mb-8'>
@@ -52,13 +77,13 @@ const ProfileDetails = () => {
               Email
             </h6>
             <p className='text-gray-400 md:text-lg max-w-max'>
-              pravunathsingh@gmail.com
+              {profileData.email}
             </p>
           </div>
 
           <div className='mb-2 md:mb-8'>
             <h6 className='text-lg text-gray-100 md:text-xl'>Phone</h6>
-            <p className='text-gray-400 md:text-lg'>(+91) 8777655512</p>
+            <p className='text-gray-400 md:text-lg'>{profileData.phone}</p>
           </div>
 
           <div className='mb-2 md:mb-8'>
@@ -69,18 +94,12 @@ const ProfileDetails = () => {
           </div>
 
           <div className='mb-2 md:mb-8'>
-            <h6 className='text-lg text-gray-100 md:text-xl'>Address</h6>
-            <p className='text-gray-400 md:text-lg'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-              quibusdam iste praesentium.
-            </p>
-          </div>
-
-          <div className='mb-2 md:mb-8'>
             <h6 className='text-lg text-gray-100 md:text-xl max-w-max'>
-              PIN Code
+              Country
             </h6>
-            <p className='text-gray-400 md:text-lg max-w-max'>712123</p>
+            <p className='text-gray-400 md:text-lg max-w-max'>
+              {profileData.country}
+            </p>
           </div>
         </div>
       </div>

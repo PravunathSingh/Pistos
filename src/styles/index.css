@@ -3481,17 +3481,14 @@ textarea.form-control.is-invalid {
 .h-40 {
 	height: 10rem;
 }
-.h-28 {
-	height: 7rem;
+.h-32 {
+	height: 8rem;
 }
 .h-6 {
 	height: 1.5rem;
 }
 .h-0 {
 	height: 0px;
-}
-.h-32 {
-	height: 8rem;
 }
 .h-8 {
 	height: 2rem;
@@ -3520,17 +3517,14 @@ textarea.form-control.is-invalid {
 .w-40 {
 	width: 10rem;
 }
-.w-28 {
-	width: 7rem;
+.w-32 {
+	width: 8rem;
 }
 .w-auto {
 	width: auto;
 }
 .w-6 {
 	width: 1.5rem;
-}
-.w-32 {
-	width: 8rem;
 }
 .w-8 {
 	width: 2rem;
@@ -4152,6 +4146,10 @@ textarea.form-control.is-invalid {
 	--tw-translate-y: -0.5rem;
 	transform: var(--tw-transform);
 }
+.hover\:-translate-y-3:hover {
+	--tw-translate-y: -0.75rem;
+	transform: var(--tw-transform);
+}
 .hover\:scale-110:hover {
 	--tw-scale-x: 1.1;
 	--tw-scale-y: 1.1;
@@ -4539,6 +4537,10 @@ textarea.form-control.is-invalid {
 		justify-content: center;
 	}
 
+	.md\:p-10 {
+		padding: 2.5rem;
+	}
+
 	.md\:py-12 {
 		padding-top: 3rem;
 		padding-bottom: 3rem;
@@ -4671,6 +4673,11 @@ textarea.form-control.is-invalid {
 	.lg\:my-80 {
 		margin-top: 20rem;
 		margin-bottom: 20rem;
+	}
+
+	.lg\:my-44 {
+		margin-top: 11rem;
+		margin-bottom: 11rem;
 	}
 
 	.lg\:mx-0 {
