@@ -8,7 +8,6 @@ import News from '../components/home/News';
 import Reason from '../components/home/Reason';
 import Subscription from '../components/home/Subscription';
 import Tradition from '../components/home/Tradition';
-import Footer from '../components/ui/Footer';
 // import Navbar from '../components/ui/Navbar';
 
 const Home = () => {
@@ -24,7 +23,6 @@ const Home = () => {
       <AppLinks />
       {/* <News /> */}
       <Subscription />
-      <Footer />
     </div>
   );
 };

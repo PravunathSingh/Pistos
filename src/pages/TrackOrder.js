@@ -12,7 +12,6 @@ import track3 from '../assests/track3.png';
 import track4 from '../assests/track4.png';
 import track5 from '../assests/track5.png';
 import track6 from '../assests/track6.png';
-import Footer from '../components/ui/Footer';
 import Navbar from '../components/ui/Navbar';
 
 const TrackOrder = () => {
@@ -20,8 +19,8 @@ const TrackOrder = () => {
     <div className='font-rubik'>
       <Navbar />
       <div className='container max-w-4xl mx-auto my-16 sm:my-20 md:my-28 lg:my-40'>
-        <div className='flex justify-between items-center mb-16 sm:mb-20 md:mb-24 lg:mb-32'>
-          <h2 className='text-gray-100 font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl'>
+        <div className='flex items-center justify-between mb-16 sm:mb-20 md:mb-24 lg:mb-32'>
+          <h2 className='text-2xl font-semibold text-gray-100 sm:text-3xl md:text-4xl lg:text-5xl'>
             Track Order
           </h2>
           <div>
@@ -32,90 +31,90 @@ const TrackOrder = () => {
         </div>
 
         <div>
-          <div className='flex gap-4 mb-10 sm:mb-14 md:mb-20 lg:mb-28 flex-wrap items-center md:justify-center'>
-            <div className='bg-cta rounded-full flex items-center justify-center p-4'>
+          <div className='flex flex-wrap items-center gap-4 mb-10 sm:mb-14 md:mb-20 lg:mb-28 md:justify-center'>
+            <div className='flex items-center justify-center p-4 rounded-full bg-cta'>
               <img src={track1} alt='' className='w-10 h-10 sm:w-12 sm:h-12' />
             </div>
             <div>
-              <h6 className='font-medium text-lg md:text-xl lg:text-2xl text-gray-200 mb-3'>
+              <h6 className='mb-3 text-lg font-medium text-gray-200 md:text-xl lg:text-2xl'>
                 Order Placed
               </h6>
-              <p className='lg:text-lg text-gray-400'>
+              <p className='text-gray-400 lg:text-lg'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Placeat?
               </p>
             </div>
           </div>
 
-          <div className='flex gap-4 mb-10 sm:mb-14 md:mb-20 lg:mb-28 flex-wrap items-center md:justify-center'>
-            <div className='bg-cta rounded-full flex items-center justify-center p-4'>
+          <div className='flex flex-wrap items-center gap-4 mb-10 sm:mb-14 md:mb-20 lg:mb-28 md:justify-center'>
+            <div className='flex items-center justify-center p-4 rounded-full bg-cta'>
               <img src={track2} alt='' className='w-10 h-10 sm:w-12 sm:h-12' />
             </div>
             <div>
-              <h6 className='font-medium text-lg md:text-xl lg:text-2xl text-gray-200 mb-3'>
+              <h6 className='mb-3 text-lg font-medium text-gray-200 md:text-xl lg:text-2xl'>
                 Order Confirmed
               </h6>
-              <p className='lg:text-lg text-gray-400'>
+              <p className='text-gray-400 lg:text-lg'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Placeat?
               </p>
             </div>
           </div>
 
-          <div className='flex gap-4 mb-10 sm:mb-14 md:mb-20 lg:mb-28 flex-wrap items-center md:justify-center'>
-            <div className='bg-cta rounded-full flex items-center justify-center p-4'>
+          <div className='flex flex-wrap items-center gap-4 mb-10 sm:mb-14 md:mb-20 lg:mb-28 md:justify-center'>
+            <div className='flex items-center justify-center p-4 rounded-full bg-cta'>
               <img src={track3} alt='' className='w-10 h-10 sm:w-12 sm:h-12' />
             </div>
             <div>
-              <h6 className='font-medium text-lg md:text-xl lg:text-2xl text-gray-200 mb-3'>
+              <h6 className='mb-3 text-lg font-medium text-gray-200 md:text-xl lg:text-2xl'>
                 Order Processed
               </h6>
-              <p className='lg:text-lg text-gray-400'>
+              <p className='text-gray-400 lg:text-lg'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Placeat?
               </p>
             </div>
           </div>
 
-          <div className='flex gap-4 mb-10 sm:mb-14 md:mb-20 lg:mb-28 flex-wrap items-center md:justify-center'>
-            <div className='bg-secondary rounded-full flex items-center justify-center p-4'>
+          <div className='flex flex-wrap items-center gap-4 mb-10 sm:mb-14 md:mb-20 lg:mb-28 md:justify-center'>
+            <div className='flex items-center justify-center p-4 rounded-full bg-secondary'>
               <img src={track4} alt='' className='w-10 h-10 sm:w-12 sm:h-12' />
             </div>
             <div>
-              <h6 className='font-medium text-lg md:text-xl lg:text-2xl text-gray-500 mb-3'>
+              <h6 className='mb-3 text-lg font-medium text-gray-500 md:text-xl lg:text-2xl'>
                 Order Received at warehouse
               </h6>
-              <p className='lg:text-lg text-gray-700'>
+              <p className='text-gray-700 lg:text-lg'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Placeat?
               </p>
             </div>
           </div>
 
-          <div className='flex gap-4 mb-10 sm:mb-14 md:mb-20 lg:mb-28 flex-wrap items-center md:justify-center'>
-            <div className='bg-secondary rounded-full flex items-center justify-center p-4'>
+          <div className='flex flex-wrap items-center gap-4 mb-10 sm:mb-14 md:mb-20 lg:mb-28 md:justify-center'>
+            <div className='flex items-center justify-center p-4 rounded-full bg-secondary'>
               <img src={track5} alt='' className='w-10 h-10 sm:w-12 sm:h-12' />
             </div>
             <div>
-              <h6 className='font-medium text-lg md:text-xl lg:text-2xl text-gray-500 mb-3'>
+              <h6 className='mb-3 text-lg font-medium text-gray-500 md:text-xl lg:text-2xl'>
                 Out For Delivery
               </h6>
-              <p className='lg:text-lg text-gray-700'>
+              <p className='text-gray-700 lg:text-lg'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Placeat?
               </p>
             </div>
           </div>
 
-          <div className='flex gap-4 mb-10 sm:mb-14 md:mb-20 lg:mb-28 flex-wrap items-center md:justify-center'>
-            <div className='bg-secondary rounded-full flex items-center justify-center p-4'>
+          <div className='flex flex-wrap items-center gap-4 mb-10 sm:mb-14 md:mb-20 lg:mb-28 md:justify-center'>
+            <div className='flex items-center justify-center p-4 rounded-full bg-secondary'>
               <img src={track6} alt='' className='w-10 h-10 sm:w-12 sm:h-12' />
             </div>
             <div>
-              <h6 className='font-medium text-lg md:text-xl lg:text-2xl text-gray-500 mb-3'>
+              <h6 className='mb-3 text-lg font-medium text-gray-500 md:text-xl lg:text-2xl'>
                 Order Delivered
               </h6>
-              <p className='lg:text-lg text-gray-700'>
+              <p className='text-gray-700 lg:text-lg'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Placeat?
               </p>
@@ -123,8 +122,6 @@ const TrackOrder = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };

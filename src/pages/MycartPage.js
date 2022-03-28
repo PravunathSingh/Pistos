@@ -6,7 +6,6 @@
 
 import React from 'react';
 import CartHeader from '../components/mycart/CartHeader';
-import Footer from '../components/ui/Footer';
 // import Navbar from '../components/ui/Navbar';
 import MyCart from '../components/mycart/MyCart';
 
@@ -16,7 +15,6 @@ const MycartPage = () => {
       {/* <Navbar /> */}
       <CartHeader />
       <MyCart />
-      <Footer />
     </div>
   );
 };

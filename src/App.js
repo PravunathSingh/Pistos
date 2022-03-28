@@ -29,6 +29,8 @@ import ForgotPassword from './pages/ForgotPassword';
 import CheckOTP from './pages/CheckOTP';
 import SetNewPassword from './pages/SetNewPassword';
 import EditProfile from './components/myProfile/EditProfile';
+import GenieAddress from './components/genie/GenieAddress';
+import Footer from './components/ui/Footer';
 
 const App = () => {
   const authCtx = useContext(Auth);
@@ -61,6 +63,7 @@ const App = () => {
           )}
 
           <Route path='/privacyPolicy' element={<Privacy />} />
+          <Route path='/genieAddress' element={<GenieAddress />} />
           <Route path='/news' element={<AllBlogs />} />
           <Route path='/editProfile' element={<EditProfile />} />
           <Route path='/forgotPassword' element={<ForgotPassword />} />
@@ -71,6 +74,7 @@ const App = () => {
           <Route path='/payment' element={<Payment />} />
           <Route path='*' element={<Error404 />} />
         </Routes>
+        <Footer />
       </ScrollToTop>
     </Router>
   );

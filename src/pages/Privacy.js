@@ -1,7 +1,6 @@
 import React from 'react';
 import PrivacyBody from '../components/privacy/PrivacyBody';
 import PrivacyHeader from '../components/privacy/PrivacyHeader';
-import Footer from '../components/ui/Footer';
 // import Navbar from '../components/ui/Navbar';
 
 const Privacy = () => {
@@ -10,7 +9,6 @@ const Privacy = () => {
       {/* <Navbar /> */}
       <PrivacyHeader />
       <PrivacyBody />
-      <Footer />
     </>
   );
 };

@@ -268,10 +268,11 @@ const Navbar = () => {
                 <div className='container fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none'>
                   <div className='relative w-auto max-w-3xl mx-auto my-40'>
                     <div className='relative flex flex-col w-full bg-gray-100 border-0 rounded-lg shadow-lg outline-none focus:outline-none'>
+                      {/* <i className='absolute cursor-pointer top-2 right-4 fa fa-times text-primary hover:text-red-500'></i> */}
                       <div className='relative flex-auto p-9'>
                         <input
                           type='text'
-                          className='px-4 w-full py-2 lg:text-lg font-medium rounded-md shadow-md bg-gray-900 text-gray-100 focus:ring-2 ring-offset-4 ring-primary'
+                          className='w-full px-4 py-2 font-medium text-gray-100 bg-gray-900 rounded-md shadow-md lg:text-lg focus:ring-2 ring-offset-4 ring-primary'
                           {...getInputProps({
                             placeholder: 'Type New Location...',
                           })}
@@ -279,7 +280,7 @@ const Navbar = () => {
 
                         <div className='mt-6 md:mt-8 lg:mt-10'>
                           {loading ? (
-                            <p className='text-gray-700 text-sm'>
+                            <p className='text-sm text-gray-700'>
                               Loading Places...
                             </p>
                           ) : null}
@@ -294,7 +295,7 @@ const Navbar = () => {
                                   className,
                                 })}
                               >
-                                <li className='mb-3 mb:mb-5 lg:text-lg font-medium hover:cursor-pointer'>
+                                <li className='mb-3 font-medium mb:mb-5 lg:text-lg hover:cursor-pointer'>
                                   {suggestion.description}
                                 </li>
                               </ul>

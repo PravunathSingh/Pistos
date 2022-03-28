@@ -29,8 +29,6 @@ const CheckoutBody = () => {
     pin: '',
   });
 
-  const [orderData, setOrderData] = useState({});
-
   const [coupons, setCoupons] = useState([]);
   const [isCouponApplied, setIsCouponApplied] = useState(false);
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import ProfileDetails from '../components/myProfile/ProfileDetails';
 import ProfileTabs from '../components/myProfile/ProfileTabs';
-import Footer from '../components/ui/Footer';
 // import Navbar from '../components/ui/Navbar';
 
 const MyProfile = () => {
@@ -21,7 +20,6 @@ const MyProfile = () => {
         <ProfileDetails />
       </div> */}
       </div>
-      <Footer />
     </div>
   );
 };

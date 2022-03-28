@@ -4,7 +4,6 @@
 */
 
 import React, { useRef, useContext } from 'react';
-import Footer from '../components/ui/Footer';
 import taco from '../assests/taco.png';
 import burger from '../assests/burger.png';
 import omlet from '../assests/omlet.png';
@@ -158,8 +157,6 @@ const Signup = () => {
           </form>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };

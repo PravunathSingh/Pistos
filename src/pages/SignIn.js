@@ -7,7 +7,6 @@
 import React, { useState, useRef, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Footer from '../components/ui/Footer';
 import taco from '../assests/taco.png';
 import burger from '../assests/burger.png';
 import omlet from '../assests/omlet.png';
@@ -163,8 +162,6 @@ const SignIn = () => {
             </div>
           </div>
         </div>
-
-        <Footer />
       </div>
     </div>
   );

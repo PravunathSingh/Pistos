@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Footer from '../components/ui/Footer';
 
 const Error404 = () => {
   return (
@@ -27,8 +26,6 @@ const Error404 = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };
