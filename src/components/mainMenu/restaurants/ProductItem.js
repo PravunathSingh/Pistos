@@ -28,6 +28,7 @@ const ProductItem = ({ product, restaurant_id }) => {
   const addToCart = () => {
     if (!token) {
       alert('Not Signed In! Please Signin to continue shopping');
+      return;
     } else if (quantity === 0) {
       alert('Item Qunatity Cannot Be Zero!');
       return;
@@ -51,11 +52,7 @@ const ProductItem = ({ product, restaurant_id }) => {
   return (
     <div className='mb-10 shadow-lg rounded-xl md:mb-4 lg:mb-0 bg-secondary'>
       <div>
-        <img
-          src={productImageSrc}
-          alt=''
-          className='w-full mb-2 rounded-xl md:mb-5'
-        />
+        <img src={productImageSrc} alt='' className='w-full mb-2 rounded-xl' />
       </div>
 
       <div className='p-4 lg:p-8'>
@@ -69,6 +66,11 @@ const ProductItem = ({ product, restaurant_id }) => {
         <p className='mb-4 text-xs italic font-light opacity-80 text-border'>
           {product.product_status === 'active' ? '' : 'OUT OF STOCK'}
         </p>
+
+        <div className='flex items-center justify-between mb-6'>
+          <p className='text-cta-dark'>{product.category_name[0]}</p>
+          <p className='text-cta-dark'>{product.category_name[1]}</p>
+        </div>
 
         <div className='flex items-center justify-between'>
           <p className='font-medium lg:text-lg text-cta'>

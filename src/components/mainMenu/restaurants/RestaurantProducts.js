@@ -37,8 +37,6 @@ const RestaurantProducts = () => {
       return a.product_selling_price - b.product_selling_price;
     } else if (sortingValue === 'highLowPrice') {
       return b.product_selling_price - a.product_selling_price;
-    } else if (sortingValue === 'mostLeastOrder') {
-      return b.product_sell_count - a.product_sell_count;
     } else {
       return products;
     }
@@ -99,12 +97,6 @@ const RestaurantProducts = () => {
           </option>
           <option value='highLowPrice' className='mb-8 text-base text-gray-300'>
             Highest To Lowest (Price)
-          </option>
-          <option
-            value='mostLeastOrder'
-            className='mb-8 text-base text-gray-300'
-          >
-            Most To Least (Ordered)
           </option>
         </select>
       </div>
