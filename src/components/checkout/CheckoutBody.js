@@ -27,6 +27,7 @@ const CheckoutBody = () => {
     address: '',
     country: '',
     pin: '',
+    state: '',
   });
 
   const [coupons, setCoupons] = useState([]);
@@ -239,6 +240,22 @@ const CheckoutBody = () => {
                 onChange={handleFormChange}
                 value={checkoutForm.address}
               ></textarea>
+            </div>
+
+            <div className='mb-6 md:mb-9'>
+              <label>
+                <h6 className='mb-4 text-lg font-medium text-gray-100 lg:text-xl md:mb-6'>
+                  State
+                </h6>
+              </label>
+              <input
+                name='state'
+                type='text'
+                className='w-full px-4 py-2 text-gray-200 rounded-lg outline-none lg:text-lg focus:ring-2 ring-offset-2 ring-secondary bg-secondary'
+                required
+                onChange={handleFormChange}
+                value={checkoutForm.state}
+              />
             </div>
 
             <div className='flex items-center justify-between gap-4 mb-10 md:mb-14'>

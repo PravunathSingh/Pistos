@@ -1,12 +1,10 @@
 // TODOS:
 // 1. Add functionality to the proceed to checkout and clear cart button.
 
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Cart } from '../../context/cartContext';
-import CartItem from './CartItem';
 import sandwich from '../../assests/sandwich.png';
 import pie from '../../assests/pie.png';
-import EmptyCart from './EmptyCart';
 import { Auth } from '../../context/authContext';
 import NotLoggedInCart from './NotLoggedInCart';
 import { Link } from 'react-router-dom';
@@ -19,18 +17,6 @@ const MyCart = () => {
   const isLoggedIn = authCtx.isLoggedIn;
 
   console.log(cartItems);
-
-  // const cart = cart.map((item) => {
-  //   return <CartItem key={item.id} item={item} />;
-  // });
-
-  // if (cart.length === 0) {
-  //   return <EmptyCart />;
-  // } else {
-  //   cart.map((item) => {
-  //     return <CartItem key={item.id} item={item} />;
-  //   });
-  // }
 
   return (
     <>
@@ -45,13 +31,15 @@ const MyCart = () => {
 
           <CartList cartItems={cartItems} />
 
-          <Link to='/checkout'>
-            <div className='max-w-full mx-auto my-12 md:ml-auto md:mt-10 lg:mt-16 md:max-w-max'>
-              <button className='w-full px-8 py-3 text-lg font-medium text-gray-900 transition-all duration-300 rounded-lg hover:text md:w-auto bg-cta md:text-xl hover:bg-cta-dark hover:scale-110 focus:ring-2 ring-offset-2 ring-cta-dark'>
-                Proceed To Checkout
-              </button>
-            </div>
-          </Link>
+          {cartCtx.cartLength !== 0 && (
+            <Link to='/checkout'>
+              <div className='max-w-full mx-auto my-12 md:ml-auto md:mt-10 lg:mt-16 md:max-w-max'>
+                <button className='w-full px-8 py-3 text-lg font-medium text-gray-900 transition-all duration-300 rounded-lg hover:text md:w-auto bg-cta md:text-xl hover:bg-cta-dark hover:scale-110 focus:ring-2 ring-offset-2 ring-cta-dark'>
+                  Proceed To Checkout
+                </button>
+              </div>
+            </Link>
+          )}
 
           <div className='relative'>
             <img

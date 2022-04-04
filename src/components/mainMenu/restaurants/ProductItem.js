@@ -33,9 +33,11 @@ const ProductItem = ({ product, restaurant_id }) => {
       alert('Item Qunatity Cannot Be Zero!');
       return;
     }
-    const stringQuantity = quantity.toString();
-    const jsonQuantity = JSON.stringify(stringQuantity);
-    cartCtx.addToCart(product.product_id, jsonQuantity, restaurant_id);
+    // const stringQuantity = quantity.toString();
+    // const jsonQuantity = JSON.stringify(stringQuantity);
+    cartCtx.addToCart(product.product_id, quantity, restaurant_id, product);
+    console.log(product);
+    setQuantity(0);
   };
 
   const wishlistHandler = () => {
@@ -59,9 +61,9 @@ const ProductItem = ({ product, restaurant_id }) => {
         <h3 className='mb-4 text-lg font-semibold text-center text-gray-100 lg:text-2xl'>
           {product.product_name}
         </h3>
-        <p className='mb-4 text-sm font-light text-center text-gray-300 lg:text-base'>
+        {/* <p className='mb-4 text-sm font-light text-center text-gray-300 lg:text-base'>
           {product.product_description}
-        </p>
+        </p> */}
 
         <p className='mb-4 text-xs italic font-light opacity-80 text-border'>
           {product.product_status === 'active' ? '' : 'OUT OF STOCK'}

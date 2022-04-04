@@ -50,7 +50,13 @@ const App = () => {
           />
           <Route path='/genie' element={<Genie />} />
           <Route path='/cart' element={<MycartPage />} />
-          <Route path='/checkout' element={<Checkout />} />
+          {isLoggedIn && <Route path='/checkout' element={<Checkout />} />}
+          {!isLoggedIn && (
+            <Route
+              path='/checkout'
+              element={<Navigate replace={true} to='/menu' />}
+            />
+          )}
           <Route path='/wishlist' element={<Wishlist />} />
           {!isLoggedIn && <Route path='/signup' element={<Signup />} />}
           {!isLoggedIn && <Route path='/signin' element={<SignIn />} />}
@@ -71,7 +77,13 @@ const App = () => {
           <Route path='/setNewPassword' element={<SetNewPassword />} />
           <Route path='/news/newsDetails/:id' element={<BlogDetailsPage />} />
           <Route path='/profile/orders' element={<TrackOrder />} />
-          <Route path='/payment' element={<Payment />} />
+          {isLoggedIn && <Route path='/payment' element={<Payment />} />}
+          {!isLoggedIn && (
+            <Route
+              path='/payment'
+              element={<Navigate replace={true} to='/menu' />}
+            />
+          )}
           <Route path='*' element={<Error404 />} />
         </Routes>
         <Footer />

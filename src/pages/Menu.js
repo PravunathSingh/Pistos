@@ -9,8 +9,8 @@ const Menu = () => {
     <div>
       {/* <Navbar /> */}
       <Locations />
-      <ExpertChoice />
       <RestaurantsMenu />
+      <ExpertChoice />
     </div>
   );
 };

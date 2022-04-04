@@ -7,6 +7,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
+import { Cart } from '../../context/cartContext';
 
 const Navbar = () => {
   const [dropdownToggler, setDropdownToggler] = useState(false);
@@ -18,6 +19,7 @@ const Navbar = () => {
   const authCtx = useContext(Auth);
   const isLoggedIn = authCtx.isLoggedIn;
   const locationCtx = useContext(Location);
+  const cartCtx = useContext(Cart);
 
   useEffect(() => {
     const getAddress = async () => {
@@ -175,7 +177,11 @@ const Navbar = () => {
                     }
                   >
                     <button>
-                      <i className='fa fa-shopping-cart'></i>
+                      <i className='fa fa-shopping-cart'></i>{' '}
+                      <span className='ml-2'>Cart </span>
+                      <span className='ml-2 font-medium text-brand-text'>
+                        {cartCtx.cartLength > 0 ? cartCtx.cartLength : ''}
+                      </span>
                     </button>
                   </NavLink>
                 </li>

@@ -7,7 +7,7 @@ import { Cart } from '../../context/cartContext';
 const CartItem = ({ item }) => {
   const productImageSrc = `https://achievexsolutions.in/current_work/eatiano${item.product_image}`;
   const cartCtx = useContext(Cart);
-  const quantity = item.quantity.replace(/"/g, "'").replace(/'/g, '');
+  // const quantity = item.quantity.replace(/"/g, "'").replace(/'/g, '');
   const deleteProduct = () => {
     cartCtx.deleteProduct(item.cart_id);
   };
@@ -35,7 +35,7 @@ const CartItem = ({ item }) => {
                 Rs. {item.product_selling_price}{' '}
               </span>
               <p className='text-brand-text lg:text-lg'>Quantity:</p>
-              <span className='text-gray-300'>{quantity}</span>
+              <span className='text-gray-300'>{item.quantity}</span>
             </div>
             {/* <div className='flex justify-between font-normal text-gray-400 lg:text-lg'>
               <p>{item.dishType}</p>
@@ -49,7 +49,7 @@ const CartItem = ({ item }) => {
             Cart Price:
             <span className='text-brand-text'>
               {' '}
-              Rs {item.product_selling_price * quantity}
+              Rs {item.product_selling_price * item.quantity}
             </span>
           </h6>
           {/* {numItems} <button>+</button> */}

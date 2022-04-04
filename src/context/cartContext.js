@@ -6,7 +6,7 @@ import { Auth } from './authContext';
 export const Cart = createContext({
   cart: [],
   cartLength: 0,
-  addToCart: (productId, quantity, restaurant_id) => {},
+  addToCart: (productId, quantity, restaurant_id, product) => {},
   deleteProduct: (cart_id) => {},
   emptyCart: () => {},
 });
@@ -48,16 +48,20 @@ const CartProvider = ({ children }) => {
       );
 
       const cartData = await res.data;
-      setCartItems(cartData.data);
+      // console.log(res.data);
+
+      setCartItems(cartData);
     };
 
     getCartItems();
   }, [token]);
 
-  const addToCart = async (product_id, quantity, restaurant_id) => {
+  const addToCart = async (product_id, quantity, restaurant_id, product) => {
     if (quantity === 0) {
       console.log(quantity);
     } else {
+      setCartItems((prevState) => [...prevState, product]);
+
       var data = JSON.stringify({
         product_id: product_id,
         quantity: quantity,
@@ -85,7 +89,6 @@ const CartProvider = ({ children }) => {
       // } else {
       //   alert('Try Again');
       // }
-      window.location.reload();
     }
   };
 
