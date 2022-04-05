@@ -60,8 +60,8 @@ const CartProvider = ({ children }) => {
     if (quantity === 0) {
       console.log(quantity);
     } else {
-      setCartItems((prevState) => [...prevState, product]);
-
+      // setCartItems((prevState) => [...prevState, product]);
+      console.log(product);
       var data = JSON.stringify({
         product_id: product_id,
         quantity: quantity,
@@ -82,7 +82,7 @@ const CartProvider = ({ children }) => {
       );
       const resData = res;
 
-      console.log(resData);
+      console.log(resData.data);
       // if (resData.status === 200) {
       //   alert('Added to cart successfully');
       //   window.location.reload();
@@ -90,6 +90,7 @@ const CartProvider = ({ children }) => {
       //   alert('Try Again');
       // }
     }
+    window.location.reload();
   };
 
   console.log(cart);
