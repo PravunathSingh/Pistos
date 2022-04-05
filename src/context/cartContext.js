@@ -82,15 +82,17 @@ const CartProvider = ({ children }) => {
       );
       const resData = res;
 
-      console.log(resData.data);
+      console.log(resData.data.data);
       // if (resData.status === 200) {
       //   alert('Added to cart successfully');
       //   window.location.reload();
       // } else {
       //   alert('Try Again');
       // }
+
+      setCartItems((prevState) => [...prevState, resData.data.data]);
     }
-    window.location.reload();
+    // window.location.reload();
   };
 
   console.log(cart);
