@@ -45,7 +45,7 @@ const CheckoutBody = () => {
 
   const itemArray = [];
   cartCtx.cart.forEach((item) => {
-    const quantity = item.quantity.replace(/"/g, "'").replace(/'/g, '');
+    const quantity = item.quantity;
     const itemBill = item.product_selling_price * quantity;
     itemArray.push(itemBill);
   });
