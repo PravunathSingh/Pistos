@@ -24,7 +24,7 @@ const RestaurantsProvider = ({ children }) => {
         }
       );
 
-      const resData = res.data.data.data;
+      const resData = res.data.data;
       setRestaurants(resData);
     };
 
