@@ -4,7 +4,7 @@
 // TODOS:
 // 3. Add increment / decrement item buttons
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import CartHeader from '../components/mycart/CartHeader';
 // import Navbar from '../components/ui/Navbar';
 import MyCart from '../components/mycart/MyCart';

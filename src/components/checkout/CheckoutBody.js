@@ -58,88 +58,6 @@ const CheckoutBody = () => {
     setCheckoutForm({ ...checkoutForm, [e.target.name]: e.target.value });
   };
 
-  const submitOrder = async (e) => {
-    e.preventDefault();
-    const config = {
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    const amount = isCouponApplied
-      ? Math.floor(
-          totalBill - (totalBill / 100) * filteredCoupons[0].discount
-        ) * 100
-      : totalBill * 100;
-    console.log(amount);
-
-    let formData = new FormData();
-    formData.append('amount', amount);
-
-    const response = await axios.post(
-      'https://achievexsolutions.in/current_work/eatiano/api/auth/order_id',
-      formData,
-      config
-    );
-
-    const orderData = response.data.data;
-    console.log(orderData);
-
-    const res = await loadScript(
-      'https://checkout.razorpay.com/v1/checkout.js'
-    );
-
-    if (!res) {
-      alert('Razorpay SDK failed to load. Are you online?');
-      return;
-    }
-    const data = {
-      name: checkoutForm.name,
-      phone: checkoutForm.phone,
-      email: checkoutForm.email,
-      address: checkoutForm.address,
-      country: checkoutForm.country,
-      pin: checkoutForm.pin,
-    };
-
-    const options = {
-      key: 'rzp_test_Su2RqsYhHFrQnI', // Enter the Key ID generated from the Dashboard
-      amount: orderData.amount,
-      name: 'Eatiano',
-      description: 'Test Transaction',
-      order_id: orderData.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      handler: function (response) {
-        console.log(response);
-      },
-      prefill: {
-        name: data.name,
-        email: data.email,
-        contact: data.phone,
-      },
-      notes: {
-        address: data.address,
-        country: data.country,
-        pin: data.pin,
-      },
-      theme: {
-        color: '#2F343A',
-      },
-    };
-
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
-
-    setCheckoutForm({
-      name: '',
-      email: '',
-      phone: '',
-      address: '',
-      country: '',
-      pin: '',
-    });
-  };
-
   useEffect(() => {
     const getCoupons = async () => {
       const config = {
@@ -171,6 +89,101 @@ const CheckoutBody = () => {
   } else {
     console.log(filteredCoupons);
   }
+
+  const submitOrder = async (e) => {
+    e.preventDefault();
+    const config = {
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const amount = isCouponApplied
+      ? Math.floor(
+          totalBill - (totalBill / 100) * filteredCoupons[0].discount
+        ) * 100
+      : totalBill * 100;
+    console.log(amount);
+
+    let formData = new FormData();
+    formData.append('state', checkoutForm.state);
+    // formData.append('amount', amount);
+    formData.append('coupon_code', filteredCoupons[0].coupon_code);
+
+    const response = await axios.post(
+      'https://achievexsolutions.in/current_work/eatiano/api/auth/order_id',
+      formData,
+      config
+    );
+
+    const orderData = response.data.data;
+    console.log(orderData);
+
+    const res = await loadScript(
+      'https://checkout.razorpay.com/v1/checkout.js'
+    );
+
+    if (!res) {
+      alert('Razorpay SDK failed to load. Are you online?');
+      return;
+    }
+    const data = {
+      name: checkoutForm.name,
+      phone: checkoutForm.phone,
+      email: checkoutForm.email,
+      address: checkoutForm.address,
+      country: checkoutForm.country,
+      pin: checkoutForm.pin,
+    };
+
+    const options = {
+      key: 'rzp_test_Su2RqsYhHFrQnI', // Enter the Key ID generated from the Dashboard
+      amount: orderData.amount / 100,
+      name: 'Eatiano',
+      description: 'Test Transaction',
+      order_id: orderData.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      handler: function (response) {
+        console.log(response);
+      },
+      prefill: {
+        name: data.name,
+        email: data.email,
+        contact: data.phone,
+      },
+      notes: {
+        address: data.address,
+        country: data.country,
+        pin: data.pin,
+      },
+      theme: {
+        color: '#2F343A',
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+
+    paymentObject.on('payment.failed', function (response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
+    paymentObject.open();
+
+    setCheckoutForm({
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
+      country: '',
+      pin: '',
+      state: '',
+    });
+  };
 
   return (
     <div className='container grid gap-24 my-16 md:my-24 lg:my-40 md:grid-cols-2'>
