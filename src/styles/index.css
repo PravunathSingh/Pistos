@@ -3346,6 +3346,10 @@ textarea.form-control.is-invalid {
 	margin-top: 0.75rem;
 	margin-bottom: 0.75rem;
 }
+.my-5 {
+	margin-top: 1.25rem;
+	margin-bottom: 1.25rem;
+}
 .my-4 {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
@@ -3436,6 +3440,9 @@ textarea.form-control.is-invalid {
 .mt-14 {
 	margin-top: 3.5rem;
 }
+.mr-4 {
+	margin-right: 1rem;
+}
 .mb-1 {
 	margin-bottom: 0.25rem;
 }
@@ -3490,6 +3497,9 @@ textarea.form-control.is-invalid {
 .h-32 {
 	height: 8rem;
 }
+.h-52 {
+	height: 13rem;
+}
 .h-6 {
 	height: 1.5rem;
 }
@@ -3525,6 +3535,9 @@ textarea.form-control.is-invalid {
 }
 .w-32 {
 	width: 8rem;
+}
+.w-52 {
+	width: 13rem;
 }
 .w-auto {
 	width: auto;
@@ -4381,9 +4394,9 @@ textarea.form-control.is-invalid {
 		margin-bottom: 3.5rem;
 	}
 
-	.md\:my-8 {
-		margin-top: 2rem;
-		margin-bottom: 2rem;
+	.md\:my-4 {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
 	}
 
 	.md\:mt-40 {
@@ -4528,6 +4541,10 @@ textarea.form-control.is-invalid {
 
 	.md\:place-content-center {
 		place-content: center;
+	}
+
+	.md\:place-content-between {
+		place-content: space-between;
 	}
 
 	.md\:place-items-center {
@@ -4862,8 +4879,8 @@ textarea.form-control.is-invalid {
 		padding: 4rem;
 	}
 
-	.lg\:p-8 {
-		padding: 2rem;
+	.lg\:p-6 {
+		padding: 1.5rem;
 	}
 
 	.lg\:py-40 {

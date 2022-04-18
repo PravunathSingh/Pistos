@@ -52,7 +52,7 @@ const RestaurantsMenu = () => {
     <div className='container mt-24 md:mt-32 lg:mt-48 font-rubik'>
       <div className='flex flex-wrap items-center justify-center gap-6 mb-12 lg:justify-between md:mb-16'>
         <h2 className='text-center text-gray-100 lg:text-left md:text-2xl lg:text-3xl'>
-          Restaurants Around The World
+          Restaurants Near You
         </h2>
 
         <div className='flex flex-wrap items-center justify-center gap-4 lg:justify-between'>

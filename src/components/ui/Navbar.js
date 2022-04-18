@@ -27,9 +27,9 @@ const Navbar = () => {
         `https://api.mapbox.com/geocoding/v5/mapbox.places/${locationCtx.long},${locationCtx.lat}.json?access_token=pk.eyJ1IjoicG5zaW5naCIsImEiOiJjbDA2Zm9udWMwZDBzM2VyMnJvcTVnbWtxIn0.z4soi_Ue9zL8XoPVvgIAvQ`
       );
 
-      const resData = res.data.features[1];
+      const resData = res.data.features[2];
       setAddress(resData);
-      console.log(address);
+      // console.log(resData);
     };
 
     getAddress();

@@ -57,19 +57,19 @@ const ProductItem = ({ product, restaurant_id }) => {
         <img src={productImageSrc} alt='' className='w-full mb-2 rounded-xl' />
       </div>
 
-      <div className='p-4 lg:p-8'>
-        <h3 className='mb-4 text-lg font-semibold text-center text-gray-100 lg:text-2xl'>
+      <div className='p-4 lg:p-6'>
+        <h3 className='mb-2 text-lg font-semibold text-center text-gray-100 lg:text-2xl'>
           {product.product_name}
         </h3>
         {/* <p className='mb-4 text-sm font-light text-center text-gray-300 lg:text-base'>
           {product.product_description}
         </p> */}
 
-        <p className='mb-4 text-xs italic font-light opacity-80 text-border'>
+        <p className='mb-2 text-xs italic font-light opacity-80 text-border'>
           {product.product_status === 'active' ? '' : 'OUT OF STOCK'}
         </p>
 
-        <div className='flex items-center justify-between mb-6'>
+        <div className='flex items-center justify-between mb-3'>
           <p className='text-cta-dark'>{product.category_name[0]}</p>
           <p className='text-cta-dark'>{product.category_name[1]}</p>
         </div>
@@ -84,7 +84,7 @@ const ProductItem = ({ product, restaurant_id }) => {
           </p>
         </div>
 
-        <div className='flex flex-wrap items-center gap-4 mt-6'>
+        <div className='flex flex-wrap items-center gap-4 mt-3'>
           <h6 className='text-gray-200'>Set Items Quantity: </h6>
           <div className='rounded-lg bg-primary'>
             <button

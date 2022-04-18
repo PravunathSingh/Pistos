@@ -26,7 +26,7 @@ const CheckOTP = () => {
     );
 
     setLoading(false);
-    const resData = res.data;
+    const resData = res;
     console.log(resData);
     setCheckOTP({
       email: '',

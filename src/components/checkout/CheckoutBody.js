@@ -30,6 +30,8 @@ const CheckoutBody = () => {
     state: '',
   });
 
+  const [razorpayResponse, setRazorPayResponse] = useState({});
+
   const [coupons, setCoupons] = useState([]);
   const [isCouponApplied, setIsCouponApplied] = useState(false);
 
@@ -109,7 +111,7 @@ const CheckoutBody = () => {
     let formData = new FormData();
     formData.append('state', checkoutForm.state);
     // formData.append('amount', amount);
-    formData.append('coupon_code', filteredCoupons[0].coupon_code);
+    formData.append('coupon_code', filteredCoupons[0].coupon_id);
 
     const response = await axios.post(
       'https://achievexsolutions.in/current_work/eatiano/api/auth/order_id',
@@ -145,6 +147,24 @@ const CheckoutBody = () => {
       order_id: orderData.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       handler: function (response) {
         console.log(response);
+        setRazorPayResponse(response);
+
+        // const responseData = new FormData();
+        // responseData.append('order_id', orderData.id);
+        // responseData.append(
+        //   'razorpay_sig',
+        //   razorpayResponse.razorpay_signature
+        // );
+        // responseData.append('payment_id', razorpayResponse.razorpay_payment_id);
+        // const validateResponse = axios.post(
+        //   'https://achievexsolutions.in/current_work/eatiano/api/auth/payment_validation',
+        //   responseData,
+        //   config
+        // );
+        // const validationData = validateResponse;
+        // console.log(validationData);
+
+        validatePayment();
       },
       prefill: {
         name: data.name,
@@ -183,6 +203,25 @@ const CheckoutBody = () => {
       pin: '',
       state: '',
     });
+  };
+
+  const validatePayment = async () => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const responseData = new FormData();
+    responseData.append('order_id', razorpayResponse.razorpay_order_id);
+    responseData.append('razorpay_sig', razorpayResponse.razorpay_signature);
+    responseData.append('payment_id', razorpayResponse.razorpay_payment_id);
+    const validateResponse = await axios.post(
+      'https://achievexsolutions.in/current_work/eatiano/api/auth/payment_validation',
+      responseData,
+      config
+    );
+    const validationData = validateResponse.data;
+    console.log(validationData);
   };
 
   return (

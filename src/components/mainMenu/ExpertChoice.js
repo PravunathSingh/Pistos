@@ -14,7 +14,7 @@ const ExpertChoice = () => {
         </h4>
       </div>
       <div className='shadow-lg py-14 bg-secondary md:py-16'>
-        <div className='container grid grid-cols-2 gap-10 md:grid-cols-4 place-content-center place-items-center'>
+        <div className='container grid grid-cols-2 gap-8 md:grid-cols-4 place-items-center'>
           <div>
             <Favs
               category='Choice Of Restaurant'
